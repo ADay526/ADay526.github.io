@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
+  
+    题解 UVA530 【Binomial Showdown】
+  
+</title>
+
+<meta name="description" content="Py大法好！！！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="题解 UVA530 【Binomial Showdown】">
+<meta property="og:url" content="https://aday526.github.io/%E9%A2%98%E8%A7%A3%20UVA530%20%E3%80%90Binomial%20Showdown%E3%80%91/index.html">
+<meta property="og:site_name" content="ADay&#39;s blog">
+<meta property="og:description" content="Py大法好！！！">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-23T03:03:24.710Z">
+<meta property="article:modified_time" content="2020-05-23T03:03:59.568Z">
+<meta property="article:author" content="ADay526">
+<meta property="article:tag" content="UVA题解">
+<meta name="twitter:card" content="summary">
+
+
+
+
+  <link rel="icon" href="\images\avatar.ico">
+
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+
+
+<link rel="stylesheet" href="/styles/main.css">
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body
+  
+    class="monochrome"
+  
+  >
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/">ADay&#39;s blog</a>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar">
+  <div class="header">
+    <h1 class="title"><a href="/">ADay&#39;s blog</a></h1>
+    
+      <p class="subtitle">
+        ADay的小窝
+      </p>
+    
+    <div class="info">
+      <div class="content">
+        
+        
+          <div class="author">ADay526</div>
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="/about"><img src="\images\avatar.gif"></a>
+          
+        </div>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li class="tag-list-container">
+                <a href="javascript:;">Tag</a>
+                <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AT%E9%A2%98%E8%A7%A3/" rel="tag">AT题解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CF%E9%A2%98%E8%A7%A3/" rel="tag">CF题解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SP%E9%A2%98%E8%A7%A3/" rel="tag">SP题解</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UVA%E9%A2%98%E8%A7%A3/" rel="tag">UVA题解</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3/" rel="tag">洛谷题解</a><span class="tag-list-count">8</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="archive-list-container">
+                <a href="javascript:;">Archive</a>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">28</span></li></ul>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="/" title="Homepage" external="false">Homepage</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/archives" title="By Year" external="false">By Year</a>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://www.luogu.com.cn/user/312393" title="Luogu-ADay" target="_blank" rel="noopener">Luogu-ADay</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://github.com/ADay526" title="Github-ADay526" target="_blank" rel="noopener">Github-ADay526</a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-题解 UVA530 【Binomial Showdown】" class="article article-type-post">
+  
+    <h1 class="article-header">
+      题解 UVA530 【Binomial Showdown】
+    </h1>
+  
+  
+
+  <div class="article-info">
+    <span class="article-date">
+  2020-05-23
+</span>
+
+    
+
+    
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UVA%E9%A2%98%E8%A7%A3/" rel="tag">UVA题解</a></li></ul>
+	</span>
+
+
+  </div>
+  <div class="article-entry">
+    <h1 id="Py大法好！！！"><a href="#Py大法好！！！" class="headerlink" title="Py大法好！！！"></a>Py大法好！！！</h1><a id="more"></a>
+<h1 id="其实也没好到哪儿去"><a href="#其实也没好到哪儿去" class="headerlink" title="其实也没好到哪儿去"></a><del><strong>其实也没好到哪儿去</strong></del></h1><p>至少在$Python$就不用考虑爆$long long$的问题<del>虽然楼上也给出了解决方案</del><br>算出来$A_n^m$再除以$m!$也可以过<br>$\mathcal{AC}$(也$\mathcal{waiting}$了好久)代码<del>就是楼上的$Python版$</del>：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> * <span class="comment">#导入math库</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">c</span><span class="params">(x, y)</span>:</span> <span class="comment">#组合数函数</span></span><br><span class="line">    <span class="keyword">if</span> y==<span class="number">0</span> <span class="keyword">or</span> x==y: <span class="comment">#特判</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    res =<span class="number">1</span></span><br><span class="line">    y=min(y,x-y) <span class="comment">#C(n,m)=C(n,n-m)</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,y+<span class="number">1</span>): <span class="comment">#计算A(n,m)</span></span><br><span class="line">        res*=x-i+<span class="number">1</span></span><br><span class="line">    res//=factorial(y) <span class="comment">#除以m!，factorial是阶乘函数，//是整除</span></span><br><span class="line">    <span class="keyword">return</span> res <span class="comment">#返回result</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    n, k = map(int, input().split()) <span class="comment">#输入</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span> <span class="keyword">and</span> k == <span class="number">0</span>: <span class="comment">#为0结束</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    print(c(n, k)) <span class="comment">#输出（自带换行）</span></span><br></pre></td></tr></table></figure></p>
+
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.e" target="_blank" title="Attribution-ShareAlike">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
+        
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+      </span>
+    </a>
+  </div>
+
+
+    
+
+  </footer>
+</article>
+
+
+
+
+
+
+
+          <div class="main-footer">
+  
+    © 2020 ADay&#39;s blog - Powered by <a href="http://hexo.io" target="_blank">Hexo</a> - Theme <a href="https://github.com/denjones/hexo-theme-chan" target="_blank">Chan</a>
+  
+</div>
+
+      
+        </div>
+      
+    </div>
+  </div>
+  
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+
+  
+<link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+<script src="/PhotoSwipe/photoswipe.js"></script>
+
+  
+<script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
+
+
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+
+
+<script src="/scripts/main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>

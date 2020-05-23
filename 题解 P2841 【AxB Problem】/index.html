@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
+  
+    题解 P2841 【AxB Problem】
+  
+</title>
+
+<meta name="description" content="看上去没有人暴力…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="题解 P2841 【AxB Problem】">
+<meta property="og:url" content="https://aday526.github.io/%E9%A2%98%E8%A7%A3%20P2841%20%E3%80%90AxB%20Problem%E3%80%91/index.html">
+<meta property="og:site_name" content="ADay&#39;s blog">
+<meta property="og:description" content="看上去没有人暴力…">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-23T03:46:40.172Z">
+<meta property="article:modified_time" content="2020-05-23T03:47:16.604Z">
+<meta property="article:author" content="ADay526">
+<meta property="article:tag" content="UVA题解">
+<meta name="twitter:card" content="summary">
+
+
+
+
+  <link rel="icon" href="\images\avatar.ico">
+
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+
+
+<link rel="stylesheet" href="/styles/main.css">
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body
+  
+    class="monochrome"
+  
+  >
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/">ADay&#39;s blog</a>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar">
+  <div class="header">
+    <h1 class="title"><a href="/">ADay&#39;s blog</a></h1>
+    
+      <p class="subtitle">
+        ADay的小窝
+      </p>
+    
+    <div class="info">
+      <div class="content">
+        
+        
+          <div class="author">ADay526</div>
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="/about"><img src="\images\avatar.gif"></a>
+          
+        </div>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li class="tag-list-container">
+                <a href="javascript:;">Tag</a>
+                <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AT%E9%A2%98%E8%A7%A3/" rel="tag">AT题解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CF%E9%A2%98%E8%A7%A3/" rel="tag">CF题解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SP%E9%A2%98%E8%A7%A3/" rel="tag">SP题解</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UVA%E9%A2%98%E8%A7%A3/" rel="tag">UVA题解</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3/" rel="tag">洛谷题解</a><span class="tag-list-count">8</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="archive-list-container">
+                <a href="javascript:;">Archive</a>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">28</span></li></ul>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="/" title="Homepage" external="false">Homepage</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/archives" title="By Year" external="false">By Year</a>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://www.luogu.com.cn/user/312393" title="Luogu-ADay" target="_blank" rel="noopener">Luogu-ADay</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://github.com/ADay526" title="Github-ADay526" target="_blank" rel="noopener">Github-ADay526</a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-题解 P2841 【AxB Problem】" class="article article-type-post">
+  
+    <h1 class="article-header">
+      题解 P2841 【AxB Problem】
+    </h1>
+  
+  
+
+  <div class="article-info">
+    <span class="article-date">
+  2020-05-23
+</span>
+
+    
+
+    
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UVA%E9%A2%98%E8%A7%A3/" rel="tag">UVA题解</a></li></ul>
+	</span>
+
+
+  </div>
+  <div class="article-entry">
+    <h2 id="看上去没有人暴力…"><a href="#看上去没有人暴力…" class="headerlink" title="看上去没有人暴力…"></a>看上去没有人暴力…</h2><a id="more"></a>
+<p>一道$bfs$居然被我做成了暴力！</p>
+<h3 id="主要思想：二进制枚举"><a href="#主要思想：二进制枚举" class="headerlink" title="主要思想：二进制枚举"></a>主要思想：<strong>二进制枚举</strong></h3><p>$\text{因为都是01串，和二进制一样，所以我们可以枚举二进制数}$</p>
+<h3 id="语言：-Py3"><a href="#语言：-Py3" class="headerlink" title="语言：$Py3$"></a>语言：$Py3$</h3><p>$\text{高精嘛。。。而且Py有bin函数，可以转二进制}$</p>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><p>$bin$函数转化的形式是“0b…”，所以我们可以使用$Py$的字符串切片，即：$s \left[x:y:z\right]$，得到的字符串是在下标$\left[x,y\right)$ 中，每$z$个步长取一个字符组成的字符串，而如果有的项不填，会设为默认值，默认值为：$x=0,y=len(s),z=1$。那么同理，切片$bin$转化后的字符串为$s\left[2:\right]$<br>于是你就会交这个代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">n=int(input())</span><br><span class="line">p=<span class="number">1</span></span><br><span class="line">s=<span class="string">'1'</span></span><br><span class="line"><span class="keyword">while</span> int(s)%n!=<span class="number">0</span>: <span class="comment">#枚举</span></span><br><span class="line">    s=bin(p)</span><br><span class="line">    s=s[<span class="number">2</span>:]</span><br><span class="line">    p+=<span class="number">1</span></span><br><span class="line">print(str(int(s)//n),s)</span><br></pre></td></tr></table></figure></p>
+<h4 id="80Pts-T了两个点？？？"><a href="#80Pts-T了两个点？？？" class="headerlink" title="80Pts?!T了两个点？？？"></a>80Pts?!T了两个点？？？</h4><h3 id="一点优化："><a href="#一点优化：" class="headerlink" title="一点优化："></a>一点优化：</h3><p>我们注意到，如果$n$为偶数时，它的倍数只能是偶数，也就是二进制以0结尾，那么我们只枚举偶数$p$。<br>其次，5的倍数如此，$n$为5的倍数也可以带进去<br>然后你交了这个代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">n = int(input())</span><br><span class="line"><span class="keyword">if</span> n % <span class="number">2</span> == <span class="number">0</span> <span class="keyword">or</span> n % <span class="number">5</span> == <span class="number">0</span>: <span class="comment">#2或5倍数</span></span><br><span class="line">    p = <span class="number">2</span></span><br><span class="line">    s = <span class="string">'10'</span></span><br><span class="line">    <span class="keyword">while</span> int(s) % n != <span class="number">0</span>:</span><br><span class="line">        s = bin(p)</span><br><span class="line">        s = s[<span class="number">2</span>:]</span><br><span class="line">        p += <span class="number">2</span></span><br><span class="line">    print(int(s) // n, s)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    p = <span class="number">1</span></span><br><span class="line">    s = <span class="string">'1'</span></span><br><span class="line">    <span class="keyword">while</span> int(s) % n != <span class="number">0</span>:</span><br><span class="line">        s = bin(p)</span><br><span class="line">        s = s[<span class="number">2</span>:]</span><br><span class="line">        p += <span class="number">1</span></span><br><span class="line">    print(int(s) // n, s)</span><br></pre></td></tr></table></figure></p>
+<h4 id="还是80Pts"><a href="#还是80Pts" class="headerlink" title="还是80Pts?!"></a>还是80Pts?!</h4><h3 id="又一点优化："><a href="#又一点优化：" class="headerlink" title="又一点优化："></a>又一点优化：</h3><p>我<del>耐心地</del>把很多数带进程序，发现$n$全是9时跑得最慢，连99都比9998慢，那么全是9的又有什么性质呢？<br>可以发现，全是9时时它的答案全是1！<br>证明：略（逃<br>利用这个性质，基本上就可以A掉本题了，我不知道再大一点有没有这个性质（逃，那么根据$99…99$的倍数性质，可以直接得出答案：</p>
+<script type="math/tex; mode=display">ans=\begin{matrix}\underbrace{11 \cdots 11}\\len(str(n))\times 9\text{个1}\end{matrix}</script><h4 id="100Pts代码："><a href="#100Pts代码：" class="headerlink" title="100Pts代码："></a>100Pts代码：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">n = int(input())</span><br><span class="line">a = str(n).count(<span class="string">'9'</span>)</span><br><span class="line"><span class="keyword">if</span> a == len(str(n)):</span><br><span class="line">    s=<span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(a * <span class="number">9</span>):</span><br><span class="line">        s+=<span class="string">'1'</span></span><br><span class="line">    print(int(s)//n,s)</span><br><span class="line"><span class="keyword">elif</span> n % <span class="number">2</span> == <span class="number">0</span> <span class="keyword">or</span> n % <span class="number">5</span> == <span class="number">0</span>:</span><br><span class="line">    p = <span class="number">2</span></span><br><span class="line">    s = <span class="string">'10'</span></span><br><span class="line">    <span class="keyword">while</span> int(s) % n != <span class="number">0</span>:</span><br><span class="line">        p += <span class="number">2</span></span><br><span class="line">        s = bin(p)</span><br><span class="line">        s = s[<span class="number">2</span>:]</span><br><span class="line">    print(int(s) // n, s)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    p = <span class="number">1</span></span><br><span class="line">    s = <span class="string">'1'</span></span><br><span class="line">    <span class="keyword">while</span> int(s) % n != <span class="number">0</span>:</span><br><span class="line">        p += <span class="number">1</span></span><br><span class="line">        s = bin(p)</span><br><span class="line">        s = s[<span class="number">2</span>:]</span><br><span class="line">    print(int(s) // n, s)</span><br></pre></td></tr></table></figure>
+<p>这是（暂时）$Py3$的最优解哦</p>
+
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.e" target="_blank" title="Attribution-ShareAlike">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
+        
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+      </span>
+    </a>
+  </div>
+
+
+    
+
+  </footer>
+</article>
+
+
+
+
+
+
+
+          <div class="main-footer">
+  
+    © 2020 ADay&#39;s blog - Powered by <a href="http://hexo.io" target="_blank">Hexo</a> - Theme <a href="https://github.com/denjones/hexo-theme-chan" target="_blank">Chan</a>
+  
+</div>
+
+      
+        </div>
+      
+    </div>
+  </div>
+  
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+
+  
+<link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+<script src="/PhotoSwipe/photoswipe.js"></script>
+
+  
+<script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
+
+
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+
+
+<script src="/scripts/main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
