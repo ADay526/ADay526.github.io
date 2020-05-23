@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
+  
+    题解 P6380 【『MdOI R2』Mayuri】
+  
+</title>
+
+<meta name="description" content="先来个60Pts做法：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="题解 P6380 【『MdOI R2』Mayuri】">
+<meta property="og:url" content="https://aday526.github.io/%E9%A2%98%E8%A7%A3%20P6380%20%E3%80%90%E3%80%8EMdOI%20R2%E3%80%8FMayuri%E3%80%91/index.html">
+<meta property="og:site_name" content="ADay&#39;s blog">
+<meta property="og:description" content="先来个60Pts做法：">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-23T09:42:37.466Z">
+<meta property="article:modified_time" content="2020-05-23T09:42:37.642Z">
+<meta property="article:author" content="ADay526">
+<meta property="article:tag" content="洛谷题解">
+<meta name="twitter:card" content="summary">
+
+
+
+
+  <link rel="icon" href="\images\avatar.ico">
+
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+
+
+<link rel="stylesheet" href="/styles/main.css">
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body
+  
+    class="monochrome"
+  
+  >
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/">ADay&#39;s blog</a>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar">
+  <div class="header">
+    <h1 class="title"><a href="/">ADay&#39;s blog</a></h1>
+    
+      <p class="subtitle">
+        ADay的小窝
+      </p>
+    
+    <div class="info">
+      <div class="content">
+        
+        
+          <div class="author">ADay526</div>
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="/about"><img src="\images\avatar.gif"></a>
+          
+        </div>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li class="tag-list-container">
+                <a href="javascript:;">Tag</a>
+                <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AT%E9%A2%98%E8%A7%A3/" rel="tag">AT题解</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CF%E9%A2%98%E8%A7%A3/" rel="tag">CF题解</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SP%E9%A2%98%E8%A7%A3/" rel="tag">SP题解</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UVA%E9%A2%98%E8%A7%A3/" rel="tag">UVA题解</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3/" rel="tag">洛谷题解</a><span class="tag-list-count">17</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="archive-list-container">
+                <a href="javascript:;">Archive</a>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">56</span></li></ul>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="/" title="Homepage" external="false">Homepage</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/archives" title="By Year" external="false">By Year</a>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://www.luogu.com.cn/user/312393" title="Luogu-ADay" target="_blank" rel="noopener">Luogu-ADay</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://github.com/ADay526" title="Github-ADay526" target="_blank" rel="noopener">Github-ADay526</a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-题解 P6380 【『MdOI R2』Mayuri】" class="article article-type-post">
+  
+    <h1 class="article-header">
+      题解 P6380 【『MdOI R2』Mayuri】
+    </h1>
+  
+  
+
+  <div class="article-info">
+    <span class="article-date">
+  2020-05-23
+</span>
+
+    
+
+    
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3/" rel="tag">洛谷题解</a></li></ul>
+	</span>
+
+
+  </div>
+  <div class="article-entry">
+    <h3 id="先来个60Pts做法："><a href="#先来个60Pts做法：" class="headerlink" title="先来个60Pts做法："></a>先来个60Pts做法：</h3><a id="more"></a>
+<p>暴力枚举所有$b$位数，就可以拿60Pts<br>代码：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span><span class="comment">//快读</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> s=<span class="number">0</span>,f=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> ch=getchar();</span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(ch==<span class="string">'-'</span>)f=<span class="number">-1</span>;</span><br><span class="line">        ch=getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))</span><br><span class="line">    &#123;</span><br><span class="line">        s=(s&lt;&lt;<span class="number">3</span>)+(s&lt;&lt;<span class="number">1</span>)+ch<span class="number">-48</span>;</span><br><span class="line">        ch=getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s*f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">int</span> x)</span><span class="comment">//快写</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x&lt;<span class="number">0</span>)<span class="built_in">putchar</span>(<span class="string">'-'</span>),x=-x;</span><br><span class="line">    <span class="keyword">if</span>(x&gt;<span class="number">9</span>)write(x/<span class="number">10</span>);</span><br><span class="line">    <span class="built_in">putchar</span>(x%<span class="number">10</span>^<span class="number">48</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">qpwm</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span><span class="comment">//快速幂</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(y)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(y&amp;<span class="number">1</span>)res=res*x;</span><br><span class="line">        y&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">        x=x*x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a,b;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> Sz=<span class="number">1e5</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">char</span> s[Sz];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    a=read();b=read();</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>,s+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=qpwm(<span class="number">10</span>,b<span class="number">-1</span>);i&lt;qpwm(<span class="number">10</span>,b);i++)<span class="comment">//暴力</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">bool</span> flag=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> tmp=i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=b;j&gt;=<span class="number">1</span>;j--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(s[j]<span class="number">-48</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(tmp%a)</span><br><span class="line">                &#123;</span><br><span class="line">                    flag=<span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                tmp/=<span class="number">10</span>;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(tmp%a==<span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                flag=<span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            tmp/=<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag)</span><br><span class="line">        &#123;</span><br><span class="line">            write(i);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"-1"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><del>给60分算仁慈了</del>    </p>
+<h2 id="100Pts做法：-mathcal-DFS"><a href="#100Pts做法：-mathcal-DFS" class="headerlink" title="100Pts做法：$\mathcal{DFS}$"></a>100Pts做法：$\mathcal{DFS}$</h2><p>从最高位开始$\mathcal{DFS}$最后<strong>字符串</strong>答案$ans$的每一位，保存现在的余数$rem$和已枚举的位数$step$。</p>
+<h3 id="余数操作：往后拓展一位就-rem-times-10"><a href="#余数操作：往后拓展一位就-rem-times-10" class="headerlink" title="余数操作：往后拓展一位就$rem\times=10$"></a>余数操作：往后拓展一位就$rem\times=10$</h3><p>每一次字符串$s$的这一位有两种情况01： </p>
+<h3 id="为0："><a href="#为0：" class="headerlink" title="为0："></a>为0：</h3><p> 即让$a$不整除，又要保证$ans$最小，那么考虑0或1，因为0和1相邻，总有一个能让$a$不整除，看余数决定即可(如果用0不行就选1，可以就尽量选0来保证最小)</p>
+<h3 id="为1："><a href="#为1：" class="headerlink" title="为1："></a>为1：</h3><p> 看余数,让这以为把剩下的余数补上，就能让$a$整除了  </p>
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><p> 其他事项都在代码里了<br> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a,b;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> Sz=<span class="number">1e5</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">char</span> s[Sz],ans[Sz];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> step,<span class="keyword">int</span> rem)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(step==b)<span class="comment">//最后一位时，同下</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(s[step]<span class="number">-48</span>)<span class="comment">//S这一位是1</span></span><br><span class="line">        &#123;</span><br><span class="line">            rem*=<span class="number">10</span>;</span><br><span class="line">            rem=a-rem;</span><br><span class="line">            <span class="keyword">while</span>(rem&lt;<span class="number">0</span>)rem+=a;</span><br><span class="line">            ans[step]=rem%a+<span class="number">48</span>;</span><br><span class="line">            <span class="keyword">if</span>(a==<span class="number">10</span>)ans[step]=<span class="number">48</span>;</span><br><span class="line">            <span class="built_in">puts</span>(ans+<span class="number">1</span>);<span class="comment">//输出</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span><span class="comment">//是0</span></span><br><span class="line">        &#123;</span><br><span class="line">            rem*=<span class="number">10</span>;</span><br><span class="line">            rem%=a;</span><br><span class="line">            ans[step]=rem?<span class="number">48</span>:<span class="number">49</span>;</span><br><span class="line">            <span class="built_in">puts</span>(ans+<span class="number">1</span>);<span class="comment">//输出</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);<span class="comment">//退出程序</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(s[step]<span class="number">-48</span>)<span class="comment">//S这一位为1</span></span><br><span class="line">    &#123;</span><br><span class="line">        rem*=<span class="number">10</span>;</span><br><span class="line">        rem=a-rem;</span><br><span class="line">        <span class="keyword">while</span>(rem&lt;<span class="number">0</span>)rem+=a;<span class="comment">//可能是负数，补成非负</span></span><br><span class="line">        ans[step]=rem%a+<span class="number">48</span>;<span class="comment">//补上余数</span></span><br><span class="line">        <span class="keyword">if</span>(a==<span class="number">10</span>)ans[step]=<span class="number">48</span>;<span class="comment">//a是10一定为0</span></span><br><span class="line">        dfs(step+<span class="number">1</span>,<span class="number">0</span>);<span class="comment">//下一位</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span><span class="comment">//为0</span></span><br><span class="line">    &#123;</span><br><span class="line">        rem*=<span class="number">10</span>;</span><br><span class="line">        rem%=a;</span><br><span class="line">        <span class="keyword">if</span>(!rem)ans[step]=<span class="number">49</span>,rem=<span class="number">1</span>;<span class="comment">//余数是0就上1，且余数设为1</span></span><br><span class="line">        <span class="keyword">else</span> ans[step]=<span class="number">48</span>;</span><br><span class="line">        dfs(step+<span class="number">1</span>,rem);<span class="comment">//下一位</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;a,&amp;b);<span class="comment">//输入啊a，b</span></span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">1</span>)<span class="comment">//特判b=1</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> t;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">        <span class="keyword">if</span>(t)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(a==<span class="number">10</span>)<span class="built_in">puts</span>(<span class="string">"-1"</span>);<span class="comment">//一位不可能是10的倍数</span></span><br><span class="line">            <span class="keyword">else</span> <span class="built_in">putchar</span>(a+<span class="number">48</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">putchar</span>(<span class="number">49</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>,s+<span class="number">1</span>);<span class="comment">//输入s</span></span><br><span class="line">    <span class="keyword">if</span>(s[<span class="number">1</span>]<span class="number">-48</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(a==<span class="number">10</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"-1"</span>);<span class="comment">//第一位不可能是10的倍数</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ans[<span class="number">1</span>]=a+<span class="number">48</span>;</span><br><span class="line">        dfs(<span class="number">2</span>,<span class="number">0</span>);<span class="comment">//从第二位开始</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        ans[<span class="number">1</span>]=<span class="number">49</span>;<span class="comment">//首位不为0</span></span><br><span class="line">        dfs(<span class="number">2</span>,<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="完结撒花！！！"><a href="#完结撒花！！！" class="headerlink" title="完结撒花！！！"></a>完结撒花！！！</h2><p><del>可是为什么比赛时才80分5555</del></p>
+
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.e" target="_blank" title="Attribution-ShareAlike">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
+        
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+      </span>
+    </a>
+  </div>
+
+
+    
+
+  </footer>
+</article>
+
+
+
+
+
+
+
+          <div class="main-footer">
+  
+    © 2020 ADay&#39;s blog - Powered by <a href="http://hexo.io" target="_blank">Hexo</a> - Theme <a href="https://github.com/denjones/hexo-theme-chan" target="_blank">Chan</a>
+  
+</div>
+
+      
+        </div>
+      
+    </div>
+  </div>
+  
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+
+  
+<link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+<script src="/PhotoSwipe/photoswipe.js"></script>
+
+  
+<script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
+
+
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+
+
+<script src="/scripts/main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
