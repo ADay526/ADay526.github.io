@@ -272,6 +272,134 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ADay526.github.io/%E9%A2%98%E8%A7%A3%20P1575%20%E3%80%90%E6%AD%A3%E8%AF%AF%E9%97%AE%E9%A2%98%E3%80%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ADay526">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ADay's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/%E9%A2%98%E8%A7%A3%20P1575%20%E3%80%90%E6%AD%A3%E8%AF%AF%E9%97%AE%E9%A2%98%E3%80%91/" itemprop="url">题解 P1575 【正误问题】</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-27T18:48:22+08:00">
+                2020-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>看到<code>and</code>和<code>or</code>，我一下就想到了py…<br>py的<code>and</code>就是c++的<code>&amp;&amp;</code>,<code>or</code>就是<code>||</code><br>那么怎么做这道题呢？  </p>
+<hr>
+<p>其实py有一个<code>eval</code>函数，可以得到一段字符串代码表达式的值，例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">eval(<span class="string">"1+1"</span>)=<span class="number">2</span></span><br><span class="line">eval(<span class="string">"pow(2,10)"</span>)=<span class="number">1024</span></span><br><span class="line">eval(<span class="string">"True and False"</span>)=<span class="literal">False</span></span><br></pre></td></tr></table></figure></p>
+<p>那么，我们就可以<del>水</del>过此题了  </p>
+<p>但是此时还有个棘手的问题——py的真和假为<code>True</code>和<code>False</code>,并不是小写  </p>
+<p>那么，我们可以用一个字符串函数<code>capitalize</code></p>
+<p>它可以把字符串第一个字符改为大写。我们把每一个单词判断是否为<code>True</code>或<code>False</code>再操作即可   </p>
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><p>如果程序会RE，说明这个表达式是错的，我们可以使用<code>try...except...</code>语句，即： 若<code>try</code>中语句发生异常，执行<code>except</code>的语句，就是输出$error$</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    s=input().split()<span class="comment">#以空格划分输入</span></span><br><span class="line">    ans=<span class="string">''</span><span class="comment">#记录改变后的表达式</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):<span class="comment">#遍历</span></span><br><span class="line">        <span class="keyword">if</span> s[i]==<span class="string">'true'</span> <span class="keyword">or</span> s[i]==<span class="string">'false'</span>:</span><br><span class="line">            s[i]=s[i].capitalize()</span><br><span class="line">        ans+=s[i]+<span class="string">' '</span></span><br><span class="line">    print(str(eval(ans)).lower())<span class="comment">#计算表达式并转为小写</span></span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    print(<span class="string">'error'</span>)<span class="comment">#异常</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://ADay526.github.io/NOIOL3%E8%87%AA%E9%97%AD%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1375,130 +1503,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ADay526.github.io/%E9%A2%98%E8%A7%A3%20UVA11461%20%E3%80%90Square%20Numbers%E3%80%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ADay526">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ADay's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/%E9%A2%98%E8%A7%A3%20UVA11461%20%E3%80%90Square%20Numbers%E3%80%91/" itemprop="url">题解 UVA11461 【Square Numbers】</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-23T18:06:33+08:00">
-                2020-05-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="思路：前缀和"><a href="#思路：前缀和" class="headerlink" title="思路：前缀和"></a>思路：前缀和</h3>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/%E9%A2%98%E8%A7%A3%20UVA11461%20%E3%80%90Square%20Numbers%E3%80%91/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1549,7 +1553,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">57</span>
+                <span class="site-state-item-count">58</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
