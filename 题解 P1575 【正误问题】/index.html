@@ -94,15 +94,15 @@
 
 
 
-<meta name="description" content="看到and和or，我一下就想到了py…py的and就是c++的&amp;&amp;,or就是||那么怎么做这道题呢？    其实py有一个eval函数，可以得到一段字符串代码表达式的值，例如：123eval(&quot;1+1&quot;)&#x3D;2eval(&quot;pow(2,10)&quot;)&#x3D;1024eval(&quot;True and False&quot;)&#x3D;False 那么，我们就可以水过此题了   但是此时还有个棘手的问题——py的真和假为">
+<meta name="description" content="看到and和or，我一下就想到了py…py的and就是c++的&amp;&amp;,or就是||那么怎么做这道题呢？    其实py有一个eval函数，可以得到一段字符串代码表达式的值，例如：123eval(&quot;1+1&quot;)&#x3D;2eval(&quot;pow(2,10)&quot;)&#x3D;1024eval(&quot;True and False&quot;)&#x3D;False 那么，我们就可以水过此题了   但是此时还有个棘手的问题——py的真和假">
 <meta property="og:type" content="article">
 <meta property="og:title" content="题解 P1575 【正误问题】">
 <meta property="og:url" content="https://aday526.github.io/%E9%A2%98%E8%A7%A3%20P1575%20%E3%80%90%E6%AD%A3%E8%AF%AF%E9%97%AE%E9%A2%98%E3%80%91/index.html">
 <meta property="og:site_name" content="ADay&#39;s blog">
-<meta property="og:description" content="看到and和or，我一下就想到了py…py的and就是c++的&amp;&amp;,or就是||那么怎么做这道题呢？    其实py有一个eval函数，可以得到一段字符串代码表达式的值，例如：123eval(&quot;1+1&quot;)&#x3D;2eval(&quot;pow(2,10)&quot;)&#x3D;1024eval(&quot;True and False&quot;)&#x3D;False 那么，我们就可以水过此题了   但是此时还有个棘手的问题——py的真和假为">
+<meta property="og:description" content="看到and和or，我一下就想到了py…py的and就是c++的&amp;&amp;,or就是||那么怎么做这道题呢？    其实py有一个eval函数，可以得到一段字符串代码表达式的值，例如：123eval(&quot;1+1&quot;)&#x3D;2eval(&quot;pow(2,10)&quot;)&#x3D;1024eval(&quot;True and False&quot;)&#x3D;False 那么，我们就可以水过此题了   但是此时还有个棘手的问题——py的真和假">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-05-27T10:48:22.092Z">
-<meta property="article:modified_time" content="2020-05-27T10:58:05.207Z">
+<meta property="article:modified_time" content="2020-05-27T11:01:35.846Z">
 <meta property="article:author" content="ADay526">
 <meta property="article:tag" content="洛谷题解">
 <meta name="twitter:card" content="summary">
@@ -340,7 +340,8 @@
       
 
       
-        <p>看到<code>and</code>和<code>or</code>，我一下就想到了py…<br>py的<code>and</code>就是c++的<code>&amp;&amp;</code>,<code>or</code>就是<code>||</code><br>那么怎么做这道题呢？  </p>
+        <a id="more"></a>
+<p>看到<code>and</code>和<code>or</code>，我一下就想到了py…<br>py的<code>and</code>就是c++的<code>&amp;&amp;</code>,<code>or</code>就是<code>||</code><br>那么怎么做这道题呢？  </p>
 <hr>
 <p>其实py有一个<code>eval</code>函数，可以得到一段字符串代码表达式的值，例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">eval(<span class="string">"1+1"</span>)=<span class="number">2</span></span><br><span class="line">eval(<span class="string">"pow(2,10)"</span>)=<span class="number">1024</span></span><br><span class="line">eval(<span class="string">"True and False"</span>)=<span class="literal">False</span></span><br></pre></td></tr></table></figure></p>
 <p>那么，我们就可以<del>水</del>过此题了  </p>
