@@ -94,15 +94,15 @@
 
 
 
-<meta name="description" content="不想用龟速乘的看这里来!!!">
+<meta name="description" content="这里详细讲一下需要C++11才能过的分块做法​">
 <meta property="og:type" content="article">
-<meta property="og:title" content="题解 SP26368 【PWRANDMOD - Power and Mod】">
-<meta property="og:url" content="https://aday526.github.io/%E9%A2%98%E8%A7%A3%20SP26368%20%E3%80%90PWRANDMOD%20-%20Power%20and%20Mod%E3%80%91/index.html">
+<meta property="og:title" content="题解 SP2713 【GSS4 - Can you answer these queries IV】">
+<meta property="og:url" content="https://aday526.github.io/%E9%A2%98%E8%A7%A3%20SP2713%20%E3%80%90GSS4%20-%20Can%20you%20answer%20these%20queries%20IV%E3%80%91/index.html">
 <meta property="og:site_name" content="ADay&#39;s blog">
-<meta property="og:description" content="不想用龟速乘的看这里来!!!">
+<meta property="og:description" content="这里详细讲一下需要C++11才能过的分块做法​">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-05-23T09:43:47.952Z">
-<meta property="article:modified_time" content="2020-05-23T09:43:48.115Z">
+<meta property="article:published_time" content="2020-06-07T05:43:24.028Z">
+<meta property="article:modified_time" content="2020-06-07T06:35:07.698Z">
 <meta property="article:author" content="ADay526">
 <meta property="article:tag" content="SP题解">
 <meta name="twitter:card" content="summary">
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="https://ADay526.github.io/题解 SP26368 【PWRANDMOD - Power and Mod】/"/>
+  <link rel="canonical" href="https://ADay526.github.io/题解 SP2713 【GSS4 - Can you answer these queries IV】/"/>
 
 
 
 
 
-  <title>题解 SP26368 【PWRANDMOD - Power and Mod】 | ADay's blog</title>
+  <title>题解 SP2713 【GSS4 - Can you answer these queries IV】 | ADay's blog</title>
   
 
 
@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ADay526.github.io/%E9%A2%98%E8%A7%A3%20SP26368%20%E3%80%90PWRANDMOD%20-%20Power%20and%20Mod%E3%80%91/">
+    <link itemprop="mainEntityOfPage" href="https://ADay526.github.io/%E9%A2%98%E8%A7%A3%20SP2713%20%E3%80%90GSS4%20-%20Can%20you%20answer%20these%20queries%20IV%E3%80%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ADay526">
@@ -290,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">题解 SP26368 【PWRANDMOD - Power and Mod】</h1>
+          <h1 class="post-title" itemprop="name headline">题解 SP2713 【GSS4 - Can you answer these queries IV】</h1>
         
 
         <div class="post-meta">
@@ -302,8 +302,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-23T17:43:47+08:00">
-                2020-05-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-07T13:43:24+08:00">
+                2020-06-07
               </time>
             
 
@@ -340,9 +340,32 @@
       
 
       
-        <h2 id="不想用龟速乘的看这里来"><a href="#不想用龟速乘的看这里来" class="headerlink" title="不想用龟速乘的看这里来!!!"></a>不想用龟速乘的看这里来!!!</h2><a id="more"></a>
-<p>前两篇题解用的都是<code>__int128</code>,但是相乘时又会爆<code>__int128</code>,又不想用龟速乘,怎么办呢？<br>我们注意到，数据范围都是<strong>正整数</strong>，所以我们可以使用无符号的<code>__int128</code>——<code>u__int128_t</code>!<br>然后读入使用<code>快读</code>，输出用<code>快写</code>，幂运算用<code>快速幂</code>即可<br><del>但是NOIP不能用…5555</del>   </p>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int __uint128_t <span class="comment">//原来忘记用了</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> <span class="comment">//快读</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> s=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> ch=getchar();</span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))ch=getchar();</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))</span><br><span class="line">    &#123;</span><br><span class="line">        s=(s&lt;&lt;<span class="number">3</span>)+(s&lt;&lt;<span class="number">1</span>)+ch<span class="number">-48</span>;</span><br><span class="line">        ch=getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">int</span> x)</span> <span class="comment">//快写</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x&lt;<span class="number">0</span>)<span class="built_in">putchar</span>(<span class="string">'-'</span>),x=-x;</span><br><span class="line">    <span class="keyword">if</span>(x&gt;<span class="number">9</span>)write(x/<span class="number">10</span>);</span><br><span class="line">    <span class="built_in">putchar</span>(x%<span class="number">10</span>^<span class="number">48</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">qp</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> mod)</span> <span class="comment">//快速幂</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(y)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(y&amp;<span class="number">1</span>)res=res*x%mod;</span><br><span class="line">        y&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">        x=x*x%mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">unsigned</span> a,b,t; <span class="comment">//unsigned运算好像比signed运算快</span></span><br><span class="line"><span class="keyword">int</span> m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    t=read(); <span class="comment">//读入t</span></span><br><span class="line">    <span class="keyword">while</span>(t--)</span><br><span class="line">    &#123; <span class="comment">//操作</span></span><br><span class="line">        a=read(),b=read(),m=read();<span class="comment">//读入a，b，m</span></span><br><span class="line">        write(qp(a,b,m)),<span class="built_in">puts</span>(<span class="string">""</span>); <span class="comment">//输出</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>这里详细讲一下需要<code>C++11</code>才能过的分块做法​  </p>
+<a id="more"></a>
+<h2 id="mathcal-S-olution"><a href="#mathcal-S-olution" class="headerlink" title="$\mathcal{S}olution$"></a>$\mathcal{S}olution$</h2><p>对于每个块，我们要维护两个东西：<code>sum,flag​</code>  </p>
+<p><code>sum</code>就是每个块的和，<code>flag</code>是块中每个数是否都为$0/1$    </p>
+<p>维护<code>flag</code>的意义在于：<strong>是否还要继续暴力开方</strong>  </p>
+<p>那么就涉及到操作了：在<strong>[</strong>$l,r$<strong>]</strong>之间的区间操作  </p>
+<h3 id="区间求和"><a href="#区间求和" class="headerlink" title="区间求和"></a>区间求和</h3><p>在靠近$l$和$r$的两边，如果有不完整的块，我们直接暴力求和，而中间完整的块，直接加上<code>sum[块的编号]</code>即可  </p>
+<p>先说一下变量的作用，以便更好理解以下代码:</p>
+<ul>
+<li>$n:$元素个数 </li>
+<li>$m:$操作数</li>
+<li>$num:$块的个数，即$\sqrt n$ </li>
+<li>$a_i:$原数组</li>
+<li>$bl_i:$第$i$个元素属于第$bl_i$个块，$bl$是$belong$的缩写</li>
+<li>$sum_i:$第$i$块的和</li>
+<li>$flag_i:$第$i$块中每个数是否都为$0/1$ </li>
+</ul>
+<p>这部分的代码如下：  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">question</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    rg ll res=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(rg <span class="keyword">int</span> i=x;i&lt;=bl[x]*num&amp;&amp;i&lt;=y;i++)</span><br><span class="line">        res+=a[i];<span class="comment">//左边不完整的块</span></span><br><span class="line">    <span class="keyword">if</span>(bl[x]!=bl[y])</span><br><span class="line">        <span class="keyword">for</span>(rg <span class="keyword">int</span> i=(bl[y]<span class="number">-1</span>)*num+<span class="number">1</span>;i&lt;=y;i++)</span><br><span class="line">            res+=a[i];<span class="comment">//右边不完整的块</span></span><br><span class="line">    <span class="keyword">for</span>(rg <span class="keyword">int</span> i=bl[x]+<span class="number">1</span>;i&lt;bl[y];i++)</span><br><span class="line">        res+=sum[i];<span class="comment">//中间完整的块</span></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="区间开方"><a href="#区间开方" class="headerlink" title="区间开方"></a>区间开方</h3><p>对于不完整的块，还是暴力，即$a_i$变成$\sqrt{a_i}$，也要更新$sum_{bl_i}$,变成$sum_{bl_i}-a_i+\sqrt{a_i}$.  </p>
+<p>而对于完整的块，如果此块的$flag$为$true$了，就不再进行操作，不然还是暴力解决  </p>
+<p>完整的块最多暴力开方$7$次，因为数据范围是$10^{18}$，而$(10^{18})^{(\dfrac{1}{2})^7}\approx1$，那么就可以放心暴力啦~  </p>
+<p>代码如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span> _sqrt(<span class="keyword">int</span> x)<span class="comment">//处理完整的块</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(flag[x])<span class="keyword">return</span>;</span><br><span class="line">    flag[x]=<span class="number">1</span>;</span><br><span class="line">    sum[x]=<span class="number">0</span>;<span class="comment">//注意更新sum</span></span><br><span class="line">    <span class="keyword">for</span>(rg <span class="keyword">int</span> i=(x<span class="number">-1</span>)*num+<span class="number">1</span>;i&lt;=x*num;i++)</span><br><span class="line">    &#123;<span class="comment">//暴力</span></span><br><span class="line">        sum[x]+=a[i]=<span class="built_in">sqrt</span>(a[i]);</span><br><span class="line">        <span class="keyword">if</span>(a[i]&gt;<span class="number">1</span>)flag[x]=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">upd</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//左边不完整的块</span></span><br><span class="line">    <span class="keyword">for</span>(rg <span class="keyword">int</span> i=x;i&lt;=bl[x]*num&amp;&amp;i&lt;=y;i++)</span><br><span class="line">        sum[bl[i]]-=a[i],a[i]=<span class="built_in">sqrt</span>(a[i]),sum[bl[i]]+=a[i];</span><br><span class="line">    <span class="comment">//右边不完整的块</span></span><br><span class="line">    <span class="keyword">if</span>(bl[x]!=bl[y])</span><br><span class="line">        <span class="keyword">for</span>(rg <span class="keyword">int</span> i=(bl[y]<span class="number">-1</span>)*num+<span class="number">1</span>;i&lt;=y;i++)</span><br><span class="line">            sum[bl[i]]-=a[i],a[i]=<span class="built_in">sqrt</span>(a[i]),sum[bl[i]]+=a[i];</span><br><span class="line">    <span class="comment">//中间完整的块</span></span><br><span class="line">    <span class="keyword">for</span>(rg <span class="keyword">int</span> i=bl[x]+<span class="number">1</span>;i&lt;bl[y];i++)</span><br><span class="line">        _sqrt(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样看来复杂度貌似是$\mathcal O(T\times m\sqrt n)$，但在<code>C++11</code>的<del>玄学</del>帮助下轻松过掉</p>
+
       
     </div>
     
@@ -372,8 +395,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/%E9%A2%98%E8%A7%A3%20P6380%20%E3%80%90%E3%80%8EMdOI%20R2%E3%80%8FMayuri%E3%80%91/" rel="next" title="题解 P6380 【『MdOI R2』Mayuri】">
-                <i class="fa fa-chevron-left"></i> 题解 P6380 【『MdOI R2』Mayuri】
+              <a href="/%E9%A2%98%E8%A7%A3%20P1575%20%E3%80%90%E6%AD%A3%E8%AF%AF%E9%97%AE%E9%A2%98%E3%80%91/" rel="next" title="题解 P1575 【正误问题】">
+                <i class="fa fa-chevron-left"></i> 题解 P1575 【正误问题】
               </a>
             
           </div>
@@ -381,10 +404,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/%E9%A2%98%E8%A7%A3%20P4549%20%E3%80%90%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E8%A3%B4%E8%9C%80%E5%AE%9A%E7%90%86%E3%80%91/" rel="prev" title="题解 P4549 【【模板】裴蜀定理】">
-                题解 P4549 【【模板】裴蜀定理】 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -511,7 +530,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#不想用龟速乘的看这里来"><span class="nav-number">1.</span> <span class="nav-text">不想用龟速乘的看这里来!!!</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码："><span class="nav-number">1.1.</span> <span class="nav-text">代码：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mathcal-S-olution"><span class="nav-number">1.</span> <span class="nav-text">$\mathcal{S}olution$</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#区间求和"><span class="nav-number">1.1.</span> <span class="nav-text">区间求和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区间开方"><span class="nav-number">1.2.</span> <span class="nav-text">区间开方</span></a></li></ol></li></ol></div>
             
 
           </div>
