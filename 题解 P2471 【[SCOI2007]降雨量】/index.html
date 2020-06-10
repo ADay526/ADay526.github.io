@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="洛谷题解," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="貌似没有人用分块维护最大值诶qwq 那我来发题解吧…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="题解 P2471 【[SCOI2007]降雨量】">
+<meta property="og:url" content="https://aday526.github.io/%E9%A2%98%E8%A7%A3%20P2471%20%E3%80%90[SCOI2007]%E9%99%8D%E9%9B%A8%E9%87%8F%E3%80%91/index.html">
+<meta property="og:site_name" content="ADay&#39;s blog">
+<meta property="og:description" content="貌似没有人用分块维护最大值诶qwq 那我来发题解吧…">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-09T14:36:27.912Z">
+<meta property="article:modified_time" content="2020-06-10T11:18:24.519Z">
+<meta property="article:author" content="ADay526">
+<meta property="article:tag" content="洛谷题解">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ADay526.github.io/题解 P2471 【[SCOI2007]降雨量】/"/>
+
+
+
+
+
+  <title>题解 P2471 【[SCOI2007]降雨量】 | ADay's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ADay's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">...</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ADay526.github.io/%E9%A2%98%E8%A7%A3%20P2471%20%E3%80%90%5BSCOI2007%5D%E9%99%8D%E9%9B%A8%E9%87%8F%E3%80%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ADay526">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ADay's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">题解 P2471 【[SCOI2007]降雨量】</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-09T22:36:27+08:00">
+                2020-06-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>貌似没有人用分块维护最大值诶qwq</p>
+<p>那我来发题解吧…</p>
+<a id="more"></a>
+<p>首先说一下<del>其他题解的大佬讲过无数次的</del>判断条件：</p>
+<p>我们设两个年份分别为$px$和$py$，$(px,py)$中降雨量的最大值$maxget$，以及它们在已知年份中的排名$p_{px}和p_{py}$（用map实现），若不存在则为$0$  </p>
+<p><strong>[</strong>注：下面的每一条判断条件基于之前所有的错误条件<strong>]</strong></p>
+<h4 id="·-py-不确定时"><a href="#·-py-不确定时" class="headerlink" title="·$py$不确定时"></a>·$py$不确定时</h4><ul>
+<li>若$px$也不确定，则无法判断$px,py$的大小，显然为maybe</li>
+<li>若$px$的降雨量$\le maxget$，则$maxget$的年份才符合题意，是false</li>
+<li>若以上都不满足，我们没法确定关系，为maybe</li>
+</ul>
+<h4 id="·-px-也确定时"><a href="#·-px-也确定时" class="headerlink" title="·$px$也确定时"></a>·$px$也确定时</h4><ul>
+<li>若$px的降雨量\le py的降雨量$，则显然为false</li>
+<li>若$maxget\ge py的降雨量$，则$py$不是$px$后的最多，为false</li>
+<li>若$py-px=p_{py}-p_{px}$，它等价于<strong>px~py间的年份都是已知的</strong>，为true(啊终于有个true了awa</li>
+<li>若以上都不满足，我们没法确定关系，为maybe</li>
+</ul>
+<h4 id="·其他，即-py确定px不确定"><a href="#·其他，即-py确定px不确定" class="headerlink" title="·其他，即$py确定px不确定$"></a>·其他，即$py确定px不确定$</h4><ul>
+<li>若$py的降雨量\le maxget$，又因为$maxget$的年份比$py$出现的早，为false</li>
+<li>若以上都不满足，我们没法确定关系，为maybe</li>
+</ul>
+<p>代码如下</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">px=read();py=read();</span><br><span class="line"><span class="keyword">if</span>(px&gt;=py)False</span><br><span class="line">rg <span class="keyword">int</span> maxget=getmax(px+<span class="number">1</span>,py<span class="number">-1</span>);</span><br><span class="line"><span class="keyword">if</span>(!p[py])</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(!p[px])Maybe</span><br><span class="line">    <span class="keyword">if</span>(r[p[px]]&lt;=maxget)False</span><br><span class="line">    Maybe</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(p[px])</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(r[p[px]]&lt;r[p[py]])False</span><br><span class="line">    <span class="keyword">if</span>(maxget&gt;=r[p[py]])False</span><br><span class="line">    <span class="keyword">if</span>(py-px==p[py]-p[px])True</span><br><span class="line">    Maybe</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(r[p[py]]&lt;=maxget)False</span><br><span class="line">Maybe</span><br></pre></td></tr></table></figure>
+<h3 id="那么，怎么求-maxget-呢？"><a href="#那么，怎么求-maxget-呢？" class="headerlink" title="那么，怎么求$maxget$呢？"></a>那么，怎么求$maxget$呢？</h3><p>我选择用分块求(<del>因为分块我最熟悉</del>因为分块最好理解)，显然要把$r$数组（即降雨量数组）分成$\sqrt n$个块，记为$num$，而用$bl_i$记录$y_i$所属的块编号，用$mx_i$记录第$i$块的最大值，用一个map：$p_i$记录$y_i$的$i$。这些在输入时可以一起解决：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(rg <span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">&#123;</span><br><span class="line">    y[i]=read();</span><br><span class="line">    r[i]=read();</span><br><span class="line">    p[y[i]]=i;</span><br><span class="line">    bl[i]=(i<span class="number">-1</span>)/num+<span class="number">1</span>;</span><br><span class="line">    mx[bl[i]]=max(mx[bl[i]],r[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>那么求$[l,r]$间的最大值，枚举三种情况</p>
+<ul>
+<li>左边不完整的块，可以暴力比较，得到最大值</li>
+<li>右边不完整的块，依然暴力比较，得到最大值</li>
+<li>中间完整的块，比较$mx_i$即可，因为$mx_i$是此块最大</li>
+</ul>
+<p>但是要注意，若$l或r$是不确定的年份，我们二分查找范围内最近确定的年份代替它即可</p>
+<p>每次查询$\mathcal O(\sqrt n)$</p>
+<p>代码:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getmax</span><span class="params">(<span class="keyword">int</span> ll,<span class="keyword">int</span> rr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(ll&gt;rr)<span class="keyword">return</span> <span class="number">-1</span>;<span class="comment">//显然不存在</span></span><br><span class="line">    rg <span class="keyword">int</span> res=<span class="number">-1</span>;</span><br><span class="line">    <span class="comment">//二分</span></span><br><span class="line">    <span class="keyword">if</span>(!p[ll])</span><br><span class="line">    &#123;</span><br><span class="line">    	<span class="keyword">int</span> pos=lower_bound(y+<span class="number">1</span>,y+n+<span class="number">1</span>,ll)-y;</span><br><span class="line">    	<span class="keyword">if</span>(pos&lt;<span class="number">1</span>||pos&gt;n)ll=<span class="number">1e9</span>+<span class="number">5</span>;</span><br><span class="line">        <span class="keyword">else</span> ll=y[pos];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!p[rr])</span><br><span class="line">    &#123;</span><br><span class="line">    	<span class="keyword">int</span> pos=upper_bound(y+<span class="number">1</span>,y+n+<span class="number">1</span>,rr)-y<span class="number">-1</span>;</span><br><span class="line">    	<span class="keyword">if</span>(pos&lt;<span class="number">1</span>||pos&gt;n)rr=<span class="number">-1e9</span><span class="number">-5</span>;</span><br><span class="line">        <span class="keyword">else</span> rr=y[pos];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(ll&gt;rr)<span class="keyword">return</span> <span class="number">-1</span>;<span class="comment">//显然不存在</span></span><br><span class="line">    <span class="keyword">for</span>(rg <span class="keyword">int</span> i=ll;i&lt;=rr&amp;&amp;i&lt;=y[min(bl[p[ll]]*num,n)];i=y[p[i]+<span class="number">1</span>])<span class="comment">//左边不完整的块</span></span><br><span class="line">    &#123;</span><br><span class="line">    	res=max(res,r[p[i]]);</span><br><span class="line">    	<span class="keyword">if</span>(p[i]==n)<span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(bl[p[ll]]!=bl[p[rr]])</span><br><span class="line">        <span class="keyword">for</span>(rg <span class="keyword">int</span> i=y[min((bl[p[rr]]<span class="number">-1</span>)*num+<span class="number">1</span>,n)];i&lt;=rr;i=y[p[i]+<span class="number">1</span>])<span class="comment">//右边不完整的块</span></span><br><span class="line">        &#123;</span><br><span class="line">            res=max(res,r[p[i]]);</span><br><span class="line">            <span class="keyword">if</span>(p[i]==n)<span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">for</span>(rg <span class="keyword">int</span> i=bl[p[ll]]+<span class="number">1</span>;i&lt;bl[p[rr]];i++)</span><br><span class="line">        res=max(res,mx[i]);<span class="comment">//中间完整的块</span></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//对了，若不存在返回-1是因为那样不会影响下面的判断</span></span><br></pre></td></tr></table></figure>
+<p>总复杂度$\mathcal O(m\sqrt n)$,本来应该能过，但map常数巨大，我们可以使用<code>unordered_map</code>，要<code>c++11</code>，再吸氧快到飞起~</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3/" rel="tag"># 洛谷题解</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/%E9%A2%98%E8%A7%A3%20SP2713%20%E3%80%90GSS4%20-%20Can%20you%20answer%20these%20queries%20IV%E3%80%91/" rel="next" title="题解 SP2713 【GSS4 - Can you answer these queries IV】">
+                <i class="fa fa-chevron-left"></i> 题解 SP2713 【GSS4 - Can you answer these queries IV】
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC81MDIyNC8yNjcxNA=="></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="ADay526" />
+          <p class="site-author-name" itemprop="name">ADay526</p>
+           
+              <p class="site-description motion-element" itemprop="description">使用来必力评论，评论区可能加载稍慢</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#·-py-不确定时"><span class="nav-number">1.</span> <span class="nav-text">·$py$不确定时</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#·-px-也确定时"><span class="nav-number">2.</span> <span class="nav-text">·$px$也确定时</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#·其他，即-py确定px不确定"><span class="nav-number">3.</span> <span class="nav-text">·其他，即$py确定px不确定$</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#那么，怎么求-maxget-呢？"><span class="nav-number"></span> <span class="nav-text">那么，怎么求$maxget$呢？</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-ADay"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ADay526</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
