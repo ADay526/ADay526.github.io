@@ -94,13 +94,15 @@
 
 
 
-<meta name="description" content="使用来必力评论，评论区可能加载稍慢">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ADay&#39;s blog">
-<meta property="og:url" content="https://aday526.github.io/tags/%E6%B8%B8%E8%AE%B0/index.html">
+<meta name="description" content="好像还没有vector水过的题解赶紧来一发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="题解 P2343 【宝石管理系统】">
+<meta property="og:url" content="https://aday526.github.io/%E9%A2%98%E8%A7%A3%20P2343%20%E3%80%90%E5%AE%9D%E7%9F%B3%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E3%80%91/index.html">
 <meta property="og:site_name" content="ADay&#39;s blog">
-<meta property="og:description" content="使用来必力评论，评论区可能加载稍慢">
+<meta property="og:description" content="好像还没有vector水过的题解赶紧来一发">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-14T11:47:43.871Z">
+<meta property="article:modified_time" content="2020-06-14T12:01:27.404Z">
 <meta property="article:author" content="ADay526">
 <meta name="twitter:card" content="summary">
 
@@ -131,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="https://ADay526.github.io/tags/游记/"/>
+  <link rel="canonical" href="https://ADay526.github.io/题解 P2343 【宝石管理系统】/"/>
 
 
 
 
 
-  <title>Tag: 游记 | ADay's blog</title>
+  <title>题解 P2343 【宝石管理系统】 | ADay's blog</title>
   
 
 
@@ -162,7 +164,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -290,54 +292,148 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>游记<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ADay526.github.io/%E9%A2%98%E8%A7%A3%20P2343%20%E3%80%90%E5%AE%9D%E7%9F%B3%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E3%80%91/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ADay526">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ADay's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/NOIOL3%E8%87%AA%E9%97%AD%E8%AE%B0/" itemprop="url">
-              
-                <span itemprop="name">NOIOL3自闭记</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">题解 P2343 【宝石管理系统】</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-05-24T22:07:33+08:00"
-              content="2020-05-24" >
-          05-24
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-14T19:47:43+08:00">
+                2020-06-14
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>好像还没有<code>vector</code>水过的题解<del>赶紧来一发</del></p>
+<a id="more"></a>
+<p>我们可以维护一个$\texttt 元素有序的$<code>vector</code>,以方便询问操作。</p>
+<p>那么这时对于插入操作，因为我们已经保证了它是有序的，我们可以<strong>二分查找出小于此数的最大元素</strong>，用<code>insert</code>函数插入在它前面即可。</p>
+<p>而<code>insert</code>函数，它的复杂度在我看来是$\mathcal O(玄学)$，看上去它是$\mathcal O(log\;n)$，但有很多大佬说是$\mathcal O(n)$，只是常数小罢了。总之能过此题</p>
+<p>但要注意一下，因为我懒不想自己写二分，就用了<code>STL</code>的<code>upper_bound</code>取大于它的最小数，所以每次我们插入时要插入那个数的相反数，同理询问也取相反数</p>
+<p>思路的确挺简单，上代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> upp(x) (upper_bound(a.begin(),a.end(),x))<span class="comment">//懒qwq</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span><span class="comment">//快读</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> s=<span class="number">0</span>,f=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> ch=getchar();</span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(ch==<span class="string">'-'</span>)f=<span class="number">-1</span>;</span><br><span class="line">        ch=getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))</span><br><span class="line">    &#123;</span><br><span class="line">        s=s*<span class="number">10</span>+ch<span class="number">-48</span>;</span><br><span class="line">        ch=getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s*f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> m,q,c,n;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;a;<span class="comment">//就是那个vector</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    m=read();q=read();</span><br><span class="line">    <span class="keyword">while</span>(m--)</span><br><span class="line">    &#123;</span><br><span class="line">        n=read();</span><br><span class="line">        a.insert(upp(-n),-n);<span class="comment">//插入相反数</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(q--)</span><br><span class="line">    &#123;</span><br><span class="line">        c=read();n=read();</span><br><span class="line">        <span class="keyword">if</span>(c==<span class="number">1</span>)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,-a[n<span class="number">-1</span>]);<span class="comment">//询问相反数</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            a.insert(upp(-n),-n);<span class="comment">//插入相反数</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/%E9%A2%98%E8%A7%A3%20P2471%20%E3%80%90%5BSCOI2007%5D%E9%99%8D%E9%9B%A8%E9%87%8F%E3%80%91/" rel="next" title="题解 P2471 【[SCOI2007]降雨量】">
+                <i class="fa fa-chevron-left"></i> 题解 P2471 【[SCOI2007]降雨量】
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -345,6 +441,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC81MDIyNC8yNjcxNA=="></div>
+    
+  </div>
+
 
         </div>
         
@@ -539,10 +641,10 @@
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
@@ -571,6 +673,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
