@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="SP题解," />
+  <meta name="keywords" content="ADay" />
 
 
 
@@ -94,17 +94,16 @@
 
 
 
-<meta name="description" content="这里对Ruby做法作详细讲解">
+<meta name="description" content="咋全是$\text 线段树&#x2F;树状数组$的题解啊…zkw线段树来一发~">
 <meta property="og:type" content="article">
-<meta property="og:title" content="题解 SP31 【MUL - Fast Multiplication】">
-<meta property="og:url" content="https://aday526.github.io/%E9%A2%98%E8%A7%A3%20SP31%20%E3%80%90MUL%20-%20Fast%20Multiplication%E3%80%91/index.html">
+<meta property="og:title" content="题解 P5142 【区间方差】">
+<meta property="og:url" content="https://aday526.github.io/%E9%A2%98%E8%A7%A3%20P5142%20%E3%80%90%E5%8C%BA%E9%97%B4%E6%96%B9%E5%B7%AE%E3%80%91/index.html">
 <meta property="og:site_name" content="ADay&#39;s blog">
-<meta property="og:description" content="这里对Ruby做法作详细讲解">
+<meta property="og:description" content="咋全是$\text 线段树&#x2F;树状数组$的题解啊…zkw线段树来一发~">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-05-23T02:25:48.744Z">
-<meta property="article:modified_time" content="2020-05-23T02:46:22.836Z">
+<meta property="article:published_time" content="2020-07-17T07:03:34.096Z">
+<meta property="article:modified_time" content="2020-07-17T10:12:25.256Z">
 <meta property="article:author" content="ADay526">
-<meta property="article:tag" content="SP题解">
 <meta name="twitter:card" content="summary">
 
 
@@ -134,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="https://ADay526.github.io/题解 SP31 【MUL - Fast Multiplication】/"/>
+  <link rel="canonical" href="https://ADay526.github.io/题解 P5142 【区间方差】/"/>
 
 
 
 
 
-  <title>题解 SP31 【MUL - Fast Multiplication】 | ADay's blog</title>
+  <title>题解 P5142 【区间方差】 | ADay's blog</title>
   
 
 
@@ -307,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ADay526.github.io/%E9%A2%98%E8%A7%A3%20SP31%20%E3%80%90MUL%20-%20Fast%20Multiplication%E3%80%91/">
+    <link itemprop="mainEntityOfPage" href="https://ADay526.github.io/%E9%A2%98%E8%A7%A3%20P5142%20%E3%80%90%E5%8C%BA%E9%97%B4%E6%96%B9%E5%B7%AE%E3%80%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ADay526">
@@ -324,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">题解 SP31 【MUL - Fast Multiplication】</h1>
+          <h1 class="post-title" itemprop="name headline">题解 P5142 【区间方差】</h1>
         
 
         <div class="post-meta">
@@ -336,8 +335,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-23T10:25:48+08:00">
-                2020-05-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-17T15:03:34+08:00">
+                2020-07-17
               </time>
             
 
@@ -374,19 +373,23 @@
       
 
       
-        <h1 id="这里对Ruby做法作详细讲解"><a href="#这里对Ruby做法作详细讲解" class="headerlink" title="这里对Ruby做法作详细讲解"></a>这里对Ruby做法作详细讲解</h1><a id="more"></a>
-<h4 id="Ruby零基础也能看懂"><a href="#Ruby零基础也能看懂" class="headerlink" title="Ruby零基础也能看懂"></a><del>Ruby零基础也能看懂</del></h4><p><a href="https://www.runoob.com/ruby/ruby-tutorial.html" target="_blank" rel="noopener">本蒟蒻是看这个自学的Ruby</a><br>先是完整代码:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">n=gets.to_i #输入数据组数</span><br><span class="line"><span class="keyword">for</span> i in <span class="number">1.</span>.n #循环</span><br><span class="line">    a, b = gets.split.<span class="built_in">map</span>(&amp;:to_i) #输入a和b</span><br><span class="line">    print a*b #输出a*b</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"\n"</span>) #换行</span><br><span class="line">end #华丽的结束~</span><br></pre></td></tr></table></figure></p>
-<h3 id="Step1"><a href="#Step1" class="headerlink" title="Step1"></a>Step1</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n=gets.to_i #输入数据组数</span><br></pre></td></tr></table></figure>
-<p>输入n(数据组数)<br>gets是读入<br>.to_i是转化为整数，即$to$ $integer$</p>
-<h3 id="Step2"><a href="#Step2" class="headerlink" title="Step2"></a>Step2</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i in <span class="number">1.</span>.n #循环</span><br></pre></td></tr></table></figure>
-<p>Ruby的for循环<br>$&lt;=&gt;$for(int i=1;i&lt;=n;i++)</p>
-<h3 id="Step3"><a href="#Step3" class="headerlink" title="Step3"></a>Step3</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a, b = gets.split.<span class="built_in">map</span>(&amp;:to_i) #输入a和b</span><br></pre></td></tr></table></figure>
-<p>输入a和b<br>因为Ruby的gets会读整行字符串<br>所以我们要用到split，即空格分开<br>然后转化为整数，一次性搞好就用map   </p>
-<h3 id="Step4"><a href="#Step4" class="headerlink" title="Step4"></a>Step4</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print a*b #输出a*b</span><br><span class="line"><span class="built_in">puts</span>(<span class="string">"\n"</span>) #换行</span><br></pre></td></tr></table></figure>
-<p>输出$a \times b$<br>这个不用解释了吧…</p>
-<h3 id="Step5"><a href="#Step5" class="headerlink" title="Step5"></a>Step5</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">end #华丽的结束~</span><br></pre></td></tr></table></figure>
-<p>for循环的结束<br>Ruby里面循环，函数，条件判断等都要以end结尾</p>
-<h1 id="看我那么用心，点个赞再走吧"><a href="#看我那么用心，点个赞再走吧" class="headerlink" title="看我那么用心，点个赞再走吧~"></a>看我那么用心，点个赞再走吧~</h1>
+        <p>咋全是$\text 线段树/树状数组$的题解啊…zkw线段树来一发~</p>
+<a id="more"></a>
+<p>首先看到题目的两个式子：</p>
+<p>$b=\dfrac{1}{n}\sum\limits_{i=l}^ra_i$①</p>
+<p>$d=\dfrac{1}{n}\sum\limits_{i=l}^r(a_i-b)^2$②</p>
+<p>把②展开得：</p>
+<p>$d=\dfrac{1}{n}\sum\limits_{i=l}^r(a_i^2-2a_ib+b^2)$③</p>
+<p>再把①代入③得：</p>
+<p>$d=\dfrac{1}{n}(\sum\limits_{i=l}^ra_i-2b\sum\limits_{i=l}^ra_i^2)+b^2$</p>
+<p>那么，我们就可以用两个数据结构维护$\sum\limits_{i=l}^ra_i$和$\sum\limits_{i=l}^ra_i^2$，$\mathcal O(\log_2n)$查询，再$\mathcal O(1)$得出结果</p>
+<p>而这题是单点修改，zkw线段树的码量和常数都会比普通线段树小很多，所以用zkw会更加方便</p>
+<p><del>树状数组是啥，能吃吗</del></p>
+<p>代码，没有压行的习惯，但也只有70+行</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long<span class="comment">//懒</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> getchar() (p1==p2&amp;&amp;(p2=(p1=buf)+fread(buf,1,1&lt;&lt;21,stdin),p1==p2)?EOF:*p1++)</span></span><br><span class="line"><span class="keyword">char</span> buf[<span class="number">1</span>&lt;&lt;<span class="number">21</span>],*p1=buf,*p2=buf;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span><span class="comment">//快读</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> _s=<span class="number">0</span>,_f=<span class="number">1</span>;<span class="keyword">char</span> _ch=getchar();</span><br><span class="line">    <span class="keyword">for</span>(;!<span class="built_in">isdigit</span>(_ch);_ch=getchar())<span class="keyword">if</span>(_ch==<span class="string">'-'</span>)_f=<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(;<span class="built_in">isdigit</span>(_ch);_ch=getchar())_s=_s*<span class="number">10</span>+_ch-<span class="string">'0'</span>;</span><br><span class="line">    <span class="keyword">return</span> _s*_f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e5</span>+<span class="number">5</span>,mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,a[maxn&lt;&lt;<span class="number">2</span>]<span class="comment">/*维护原数组的和*/</span>,b[maxn&lt;&lt;<span class="number">2</span>]<span class="comment">/*维护平方和*/</span>,N<span class="comment">/*详见zkw线段树具体教程*/</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">()</span><span class="comment">//zkw建树</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    n=read();m=read();</span><br><span class="line">    <span class="keyword">for</span>(N=<span class="number">1</span>;N&lt;=n+<span class="number">1</span>;N&lt;&lt;=<span class="number">1</span>)<span class="string">"YOU AK IOI"</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">signed</span> i=N+<span class="number">1</span>;i&lt;=N+n;i++)a[i]=read(),b[i]=a[i]*a[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">signed</span> i=N<span class="number">-1</span>;i&gt;=<span class="number">1</span>;i--)a[i]=a[i&lt;&lt;<span class="number">1</span>]+a[i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>],b[i]=b[i&lt;&lt;<span class="number">1</span>]+b[i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">modify</span><span class="params">(<span class="keyword">int</span> *q,<span class="keyword">int</span> s,<span class="keyword">int</span> k)</span><span class="comment">//单点修改</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> d=k-q[s+=N];<span class="comment">//赋值=加上他们的差</span></span><br><span class="line">    <span class="keyword">for</span>(;s;s&gt;&gt;=<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        q[s]=(q[s]+d)%mod;</span><br><span class="line">        <span class="keyword">if</span>(q[s]&lt;<span class="number">0</span>)q[s]+=mod;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> *q,<span class="keyword">int</span> s,<span class="keyword">int</span> t)</span><span class="comment">//区间查询</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(s=N+s<span class="number">-1</span>,t=N+t+<span class="number">1</span>;s^t^<span class="number">1</span>;s&gt;&gt;=<span class="number">1</span>,t&gt;&gt;=<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(~s&amp;<span class="number">1</span>)res=(res+q[s^<span class="number">1</span>])%mod;</span><br><span class="line">        <span class="keyword">if</span>(t&amp;<span class="number">1</span>)res=(res+q[t^<span class="number">1</span>])%mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span> s,<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    modify(a,s,k);</span><br><span class="line">    modify(b,s,(k*k)%mod);<span class="comment">//维护平方和，应是k*k</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">inv</span><span class="params">(<span class="keyword">int</span> x)</span><span class="comment">//逆元</span></span></span><br><span class="line"><span class="function"></span>&#123;<span class="comment">//mod逆元(x)=(x^(mod-2))%mod</span></span><br><span class="line">    <span class="keyword">int</span> y=mod<span class="number">-2</span>,res=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(;y;x=(x*x)%mod,y&gt;&gt;=<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">if</span>(y&amp;<span class="number">1</span>)res=(res*x)%mod;<span class="comment">//快速幂</span></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">ask</span><span class="params">(<span class="keyword">int</span> s,<span class="keyword">int</span> t)</span><span class="comment">//计算结果</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> num=t-s+<span class="number">1</span>,u=query(a,s,t),v=query(b,s,t);</span><br><span class="line">    <span class="keyword">int</span> i=inv(num);</span><br><span class="line">    <span class="keyword">int</span> w=i*u%mod;</span><br><span class="line">    <span class="keyword">int</span> res=v<span class="number">-2l</span>l*w%mod*u%mod;</span><br><span class="line">    res=res*i%mod+w*w%mod;</span><br><span class="line">    res%=mod;</span><br><span class="line">    <span class="keyword">return</span> res&lt;<span class="number">0</span>?res+mod:res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    build();</span><br><span class="line">    <span class="keyword">while</span>(m--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> opt=read(),x=read(),y=read();</span><br><span class="line">        <span class="keyword">if</span>(opt==<span class="number">1</span>)change(x,y);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ask(x,y));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后提醒一下，记得勤取模！</p>
+<p>PS:60篇题解祭<del>（求过）</del></p>
+
       
     </div>
     
@@ -401,12 +404,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/SP%E9%A2%98%E8%A7%A3/" rel="tag"># SP题解</a>
-          
-        </div>
-      
 
       
       
@@ -416,8 +413,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/%E9%A2%98%E8%A7%A3%20UVA492%20%E3%80%90Pig-Latin%E3%80%91/" rel="next" title="题解 UVA492 【Pig-Latin】">
-                <i class="fa fa-chevron-left"></i> 题解 UVA492 【Pig-Latin】
+              <a href="/%E9%A2%98%E8%A7%A3%20P3380%20%E3%80%90%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E4%BA%8C%E9%80%BC%E5%B9%B3%E8%A1%A1%E6%A0%91%EF%BC%88%E6%A0%91%E5%A5%97%E6%A0%91%EF%BC%89%E3%80%91/" rel="next" title="题解 P3380 【【模板】二逼平衡树（树套树）】">
+                <i class="fa fa-chevron-left"></i> 题解 P3380 【【模板】二逼平衡树（树套树）】
               </a>
             
           </div>
@@ -425,10 +422,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/%E9%A2%98%E8%A7%A3%20UVA1210%20%E3%80%90%E8%BF%9E%E7%BB%AD%E7%B4%A0%E6%95%B0%E4%B9%8B%E5%92%8C%20Sum%20of%20Consecutive%20Prime%20Numbers%E3%80%91/" rel="prev" title="题解 UVA1210 【连续素数之和 Sum of Consecutive Prime Numbers】">
-                题解 UVA1210 【连续素数之和 Sum of Consecutive Prime Numbers】 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -482,17 +475,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -545,22 +529,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#这里对Ruby做法作详细讲解"><span class="nav-number">1.</span> <span class="nav-text">这里对Ruby做法作详细讲解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ruby零基础也能看懂"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">Ruby零基础也能看懂</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step1"><span class="nav-number">1.0.1.</span> <span class="nav-text">Step1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step2"><span class="nav-number">1.0.2.</span> <span class="nav-text">Step2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step3"><span class="nav-number">1.0.3.</span> <span class="nav-text">Step3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step4"><span class="nav-number">1.0.4.</span> <span class="nav-text">Step4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step5"><span class="nav-number">1.0.5.</span> <span class="nav-text">Step5</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#看我那么用心，点个赞再走吧"><span class="nav-number">2.</span> <span class="nav-text">看我那么用心，点个赞再走吧~</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
