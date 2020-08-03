@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="UVA题解," />
+  <meta name="keywords" content="洛谷题解," />
 
 
 
@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="先来康康柿子">
+<meta name="description" content="听说这题卡线段树&#x2F;yiw…吓得我打了个zkw!">
 <meta property="og:type" content="article">
-<meta property="og:title" content="题解 UVA10976 【分数拆分 Fractions Again】">
-<meta property="og:url" content="https://aday526.github.io/%E9%A2%98%E8%A7%A3%20UVA10976%20%E3%80%90%E5%88%86%E6%95%B0%E6%8B%86%E5%88%86%20Fractions%20Again%E3%80%91/index.html">
+<meta property="og:title" content="题解 P2412 【查单词】">
+<meta property="og:url" content="https://aday526.github.io/%E9%A2%98%E8%A7%A3%20P2412%20%E3%80%90%E6%9F%A5%E5%8D%95%E8%AF%8D%E3%80%91/index.html">
 <meta property="og:site_name" content="ADay&#39;s blog">
-<meta property="og:description" content="先来康康柿子">
+<meta property="og:description" content="听说这题卡线段树&#x2F;yiw…吓得我打了个zkw!">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-05-23T09:36:16.593Z">
-<meta property="article:modified_time" content="2020-05-23T09:36:16.753Z">
+<meta property="article:published_time" content="2020-08-03T10:13:51.821Z">
+<meta property="article:modified_time" content="2020-08-03T11:10:34.730Z">
 <meta property="article:author" content="ADay526">
-<meta property="article:tag" content="UVA题解">
+<meta property="article:tag" content="洛谷题解">
 <meta name="twitter:card" content="summary">
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="https://ADay526.github.io/题解 UVA10976 【分数拆分 Fractions Again】/"/>
+  <link rel="canonical" href="https://ADay526.github.io/题解 P2412 【查单词】/"/>
 
 
 
 
 
-  <title>题解 UVA10976 【分数拆分 Fractions Again】 | ADay's blog</title>
+  <title>题解 P2412 【查单词】 | ADay's blog</title>
   
 
 
@@ -307,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ADay526.github.io/%E9%A2%98%E8%A7%A3%20UVA10976%20%E3%80%90%E5%88%86%E6%95%B0%E6%8B%86%E5%88%86%20Fractions%20Again%E3%80%91/">
+    <link itemprop="mainEntityOfPage" href="https://ADay526.github.io/%E9%A2%98%E8%A7%A3%20P2412%20%E3%80%90%E6%9F%A5%E5%8D%95%E8%AF%8D%E3%80%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ADay526">
@@ -324,7 +324,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">题解 UVA10976 【分数拆分 Fractions Again】</h1>
+          <h1 class="post-title" itemprop="name headline">题解 P2412 【查单词】</h1>
         
 
         <div class="post-meta">
@@ -336,8 +336,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-23T17:36:16+08:00">
-                2020-05-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-03T18:13:51+08:00">
+                2020-08-03
               </time>
             
 
@@ -374,9 +374,19 @@
       
 
       
-        <h2 id="先来康康柿子"><a href="#先来康康柿子" class="headerlink" title="先来康康柿子"></a>先来康康柿子</h2><a id="more"></a>
-<h3 id="前面的题解都是逆向推的，我就来正向推"><a href="#前面的题解都是逆向推的，我就来正向推" class="headerlink" title="前面的题解都是逆向推的，我就来正向推"></a>前面的题解都是逆向推的，我就来正向推</h3><script type="math/tex; mode=display">\dfrac{1}{k}=\dfrac{1}{x}+\dfrac{1}{y}</script><script type="math/tex; mode=display">\text{通分一下}</script><script type="math/tex; mode=display">\dfrac{1}{k}=\dfrac{x+y}{xy}</script><script type="math/tex; mode=display">\text{去分母}</script><script type="math/tex; mode=display">\dfrac{1}{k}\times kxy=\dfrac{x+y}{xy}\times kxy</script><script type="math/tex; mode=display">xy=k(x+y)</script><script type="math/tex; mode=display">\text{去括号,挪一下}</script><script type="math/tex; mode=display">xy-kx-ky=0</script><script type="math/tex; mode=display">\text{两边加一个神奇的东西}k^2</script><script type="math/tex; mode=display">xy-kx-ky+k^2=k^2</script><script type="math/tex; mode=display">\text{然后就可以十字相乘来分解}</script><script type="math/tex; mode=display">(x-k)(y-k)=k^2</script><p>于是暴力枚举$k^2$的因数$(x-k)$和$(y-k)$即可<br>要输出个数，我们可以把结果写成结构体，存进队列$q$，个数就是$q.size()$<br>复杂度$\mathcal{O}(\sqrt{k^2})=\mathcal{O}(k)$，可以过  </p>
-<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct ans</span><br><span class="line">&#123;</span><br><span class="line">	int x,y;</span><br><span class="line">&#125;;&#x2F;&#x2F;储存结果</span><br><span class="line">queue&lt;ans&gt;q;&#x2F;&#x2F;队列</span><br><span class="line">int k;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	while(~scanf(&quot;%d&quot;,&amp;k))</span><br><span class="line">	&#123;</span><br><span class="line">		int res&#x3D;k*k;</span><br><span class="line">  		&#x2F;&#x2F;暴力枚举k²的因数</span><br><span class="line">		for(int i&#x3D;1;i&lt;&#x3D;k;i++)if(res%i&#x3D;&#x3D;0)q.push((ans)&#123;res&#x2F;i,i&#125;);</span><br><span class="line">		printf(&quot;%d\n&quot;,q.size());&#x2F;&#x2F;输出个数</span><br><span class="line">		while(!q.empty())printf(&quot;1&#x2F;%d &#x3D; 1&#x2F;%d + 1&#x2F;%d\n&quot;,k,k+q.front().x,k+q.front().y),q.pop();&#x2F;&#x2F;输出结果</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>听说这题卡线段树/yiw…吓得我打了个zkw!  </p>
+<a id="more"></a>
+<hr>
+<p>首先简单讲一下zkw线段树，这玩意其实就是<strong>非递归的线段树</strong>。</p>
+<p>那么怎样做到非递归呢？每次修改/查询自底向上即可。</p>
+<p>那么怎样做到自底向上呢？详见往期日报第35期…<a href="https://www.luogu.com.cn/blog/82152/Introduction-of-zkwSegmentTree" target="_blank" rel="noopener">link</a></p>
+<hr>
+<p>在这道题中，我们把zkw线段树上的一个节点定义为<strong>其子树中字典序最大的字符串</strong>，就能实现RMQ查询了。</p>
+<p>但是要注意一下，题目中的字符串比较方式是$\Huge 不区分大小写的$。把字符串先变成全部小写再比较就可以了qwq。</p>
+<p>代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rg register</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> il inline</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> cs const</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> sta static<span class="comment">//常用的def</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fp(i,x,y) for(rg int i=(x);i&lt;=(y);++i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fd(i,x,y) for(rg int i=(x);i&gt;=(y);--i)</span></span><br><span class="line"><span class="keyword">namespace</span> io&#123;sta streambuf *inbuf=<span class="built_in">cin</span>.rdbuf();sta streambuf *outbuf=<span class="built_in">cout</span>.rdbuf();<span class="keyword">char</span> buf[<span class="number">1</span>&lt;&lt;<span class="number">21</span>],*p1=buf,*p2=buf;<span class="function">il <span class="keyword">char</span> <span class="title">gc</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> (p1==p2&amp;&amp;(p2=(p1=buf)+inbuf-&gt;sgetn(buf,<span class="number">1</span>&lt;&lt;<span class="number">21</span>),p1==p2)?EOF:*p1++);&#125;<span class="function">il <span class="keyword">void</span> <span class="title">pc</span><span class="params">(<span class="keyword">char</span> x)</span></span>&#123;outbuf-&gt;sputc(x);&#125;<span class="function">il <span class="keyword">void</span> <span class="title">ps</span><span class="params">(cs <span class="keyword">char</span> *x)</span></span>&#123;outbuf-&gt;sputn(x,<span class="keyword">sizeof</span>(x)),pc(<span class="number">10</span>);&#125;<span class="function">il <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;rg <span class="keyword">int</span> _s=<span class="number">0</span>,_f=<span class="number">1</span>;rg <span class="keyword">char</span> _ch=gc();<span class="keyword">for</span>(;!<span class="built_in">isdigit</span>(_ch);_ch=gc())<span class="keyword">if</span>(_ch==<span class="string">'-'</span>)_f=<span class="number">-1</span>;<span class="keyword">for</span>(;<span class="built_in">isdigit</span>(_ch);_ch=gc())_s=_s*<span class="number">10</span>+_ch-<span class="string">'0'</span>;<span class="keyword">return</span> _s*_f;&#125;<span class="function">il <span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">int</span> _x)</span></span>&#123;<span class="keyword">unsigned</span> <span class="keyword">int</span> _x1;<span class="keyword">if</span>(_x&lt;<span class="number">0</span>)<span class="built_in">putchar</span>(<span class="string">'-'</span>),_x1=<span class="number">1u</span>*(-_x);<span class="keyword">else</span> _x1=_x;sta <span class="keyword">char</span> _sta[<span class="number">15</span>];<span class="keyword">int</span> _p=<span class="number">0</span>;<span class="keyword">do</span>&#123;_sta[_p++]=_x1%<span class="number">10</span>^<span class="number">48</span>;_x1/=<span class="number">10</span>;&#125;<span class="keyword">while</span>(_x1);<span class="keyword">while</span>(_p--)pc(_sta[_p]);&#125;<span class="built_in">string</span> _s;<span class="function">il <span class="built_in">string</span> <span class="title">reads</span><span class="params">()</span></span>&#123;_s.clear();rg <span class="keyword">char</span> _ch=gc();<span class="keyword">while</span>(<span class="built_in">isspace</span>(_ch))_ch=gc();<span class="keyword">for</span>(;!<span class="built_in">isspace</span>(_ch);_ch=gc())_s+=_ch;<span class="keyword">return</span> _s;&#125;<span class="function">il <span class="keyword">void</span> <span class="title">writes</span><span class="params">(<span class="built_in">string</span> _s)</span></span>&#123;<span class="keyword">if</span>(_s.empty())<span class="keyword">return</span>;fp(i,<span class="number">0</span>,_s.size()<span class="number">-1</span>)pc(_s[i]);&#125;<span class="function">il <span class="keyword">void</span> <span class="title">writeln</span><span class="params">(<span class="keyword">int</span> _x)</span></span>&#123;write(_x);pc(<span class="number">10</span>);&#125;<span class="function">il <span class="keyword">void</span> <span class="title">writesp</span><span class="params">(<span class="keyword">int</span> _x)</span></span>&#123;write(_x);pc(<span class="string">' '</span>);&#125;&#125;<span class="keyword">using</span> <span class="keyword">namespace</span> io;</span><br><span class="line"><span class="comment">//快读快写</span></span><br><span class="line">cs <span class="keyword">int</span> maxn=<span class="number">5e4</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,q;</span><br><span class="line"><span class="built_in">string</span> a[maxn&lt;&lt;<span class="number">2</span>];<span class="comment">//4倍空间awa</span></span><br><span class="line"><span class="function">il <span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="built_in">string</span> x,<span class="built_in">string</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;<span class="comment">//字符串的比较</span></span><br><span class="line">    <span class="keyword">if</span>(x==<span class="string">""</span>)<span class="keyword">return</span> <span class="number">0</span>;<span class="keyword">if</span>(y==<span class="string">""</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//特判为空</span></span><br><span class="line">    fp(i,<span class="number">0</span>,x.size()<span class="number">-1</span>)x[i]=<span class="built_in">tolower</span>(x[i]);</span><br><span class="line">    fp(i,<span class="number">0</span>,y.size()<span class="number">-1</span>)y[i]=<span class="built_in">tolower</span>(y[i]);</span><br><span class="line">    <span class="comment">//转成小写</span></span><br><span class="line">    <span class="keyword">return</span> x&gt;y;<span class="comment">//string重载了小于号</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function">il <span class="built_in">string</span> <span class="title">max</span><span class="params">(<span class="built_in">string</span> x,<span class="built_in">string</span> y)</span></span>&#123;<span class="keyword">return</span> cmp(x,y)?x:y;&#125;<span class="comment">//取字符串max</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;<span class="comment">//建树</span></span><br><span class="line">    n=read();q=read();</span><br><span class="line">    <span class="keyword">for</span>(m=<span class="number">1</span>;m&lt;=n+<span class="number">1</span>;m&lt;&lt;=<span class="number">1</span>)<span class="string">"YOU AK IOI"</span>;</span><br><span class="line">    <span class="comment">//zkw线段树深度</span></span><br><span class="line">    fp(i,m+<span class="number">1</span>,m+n)a[i]=reads();<span class="comment">//reads为读字符串</span></span><br><span class="line">    fd(i,m<span class="number">-1</span>,<span class="number">1</span>)a[i]=max(a[i&lt;&lt;<span class="number">1</span>],a[i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]);</span><br><span class="line">    <span class="comment">//每个节点保存最大的</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function">il <span class="built_in">string</span> <span class="title">ask</span><span class="params">(<span class="keyword">int</span> s,<span class="keyword">int</span> t)</span></span></span><br><span class="line"><span class="function"></span>&#123;<span class="comment">//区间查询</span></span><br><span class="line">    <span class="built_in">string</span> res=<span class="string">""</span>;</span><br><span class="line">    <span class="keyword">for</span>(s=m+s<span class="number">-1</span>,t=m+t+<span class="number">1</span>;s^t^<span class="number">1</span>;s&gt;&gt;=<span class="number">1</span>,t&gt;&gt;=<span class="number">1</span>)</span><br><span class="line">    &#123;<span class="comment">//自底向上</span></span><br><span class="line">        <span class="keyword">if</span>(~s&amp;<span class="number">1</span>)res=max(res,a[s^<span class="number">1</span>]);</span><br><span class="line">        <span class="comment">//左指针的父亲的右儿子在查询范围内</span></span><br><span class="line">        <span class="keyword">if</span>(t&amp;<span class="number">1</span>)res=max(res,a[t^<span class="number">1</span>]);</span><br><span class="line">        <span class="comment">//同理</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    build();</span><br><span class="line">    <span class="keyword">while</span>(q--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> x=read(),y=read();</span><br><span class="line">        writes(ask(x,y)+<span class="string">"\n"</span>);</span><br><span class="line">        <span class="comment">//别忘了换行哦</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如过还卡不过就开O2吧…[无奈]</p>
+
       
     </div>
     
@@ -393,7 +403,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/UVA%E9%A2%98%E8%A7%A3/" rel="tag"># UVA题解</a>
+            <a href="/tags/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3/" rel="tag"># 洛谷题解</a>
           
         </div>
       
@@ -406,8 +416,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/%E9%A2%98%E8%A7%A3%20UVA10929%20%E3%80%90You%20can%20say%2011%E3%80%91/" rel="next" title="题解 UVA10929 【You can say 11】">
-                <i class="fa fa-chevron-left"></i> 题解 UVA10929 【You can say 11】
+              <a href="/%E9%A2%98%E8%A7%A3%20P5142%20%E3%80%90%E5%8C%BA%E9%97%B4%E6%96%B9%E5%B7%AE%E3%80%91/" rel="next" title="题解 P5142 【区间方差】">
+                <i class="fa fa-chevron-left"></i> 题解 P5142 【区间方差】
               </a>
             
           </div>
@@ -415,10 +425,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/%E9%A2%98%E8%A7%A3%20SP4141%20%E3%80%90ETF%20-%20Euler%20Totient%20Function%E3%80%91/" rel="prev" title="题解 SP4141 【ETF - Euler Totient Function】">
-                题解 SP4141 【ETF - Euler Totient Function】 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -472,17 +478,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -535,22 +532,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#先来康康柿子"><span class="nav-number">1.</span> <span class="nav-text">先来康康柿子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#前面的题解都是逆向推的，我就来正向推"><span class="nav-number">1.1.</span> <span class="nav-text">前面的题解都是逆向推的，我就来正向推</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码："><span class="nav-number">1.1.1.</span> <span class="nav-text">代码：</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
