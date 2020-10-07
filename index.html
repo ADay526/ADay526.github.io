@@ -306,6 +306,405 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ADay526.github.io/%E9%A2%98%E8%A7%A3%20SP913%20%E3%80%90QTREE2%20-%20Query%20on%20a%20tree%20II%E3%80%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ADay526">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ADay's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/%E9%A2%98%E8%A7%A3%20SP913%20%E3%80%90QTREE2%20-%20Query%20on%20a%20tree%20II%E3%80%91/" itemprop="url">题解 SP913 【QTREE2 - Query on a tree II】</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-10-07T22:46:39+08:00">
+                2020-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="树剖解法"><a href="#树剖解法" class="headerlink" title="树剖解法"></a>树剖解法</h2><p>题解区写树剖的只有两篇，而且这两篇求 $\texttt{DIST}$ 都是 $\mathcal O(\log n)$ 的做法，其实可以 $\mathcal O(1)$ 求出。</p>
+<h3 id="前置芝士"><a href="#前置芝士" class="headerlink" title="前置芝士"></a>前置芝士</h3><p>用重链剖分AC <a href="https://www.luogu.com.cn/problem/P3379" target="_blank" rel="noopener">LCA模板</a> 和 <a href="https://www.luogu.com.cn/problem/P5903" target="_blank" rel="noopener">树上k级祖先模板</a>。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>首先对整棵树进行树剖，即两次 $\texttt{dfs}$，但是在此过程中，需要多记录一个变量，<code>dist[u]</code>，即u节点到根节点的距离，用其父亲的 <code>dist</code> 加上边权即可，以便 $\mathcal O(1)$ 求 $\texttt{DIST}$。</p>
+<p>复杂度 $\mathcal O(n)$</p>
+<h3 id="DFS-Code"><a href="#DFS-Code" class="headerlink" title="DFS Code"></a>DFS Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> f)</span></span>&#123;</span><br><span class="line">    siz[u]=<span class="number">1</span>;fa[u]=f;<span class="comment">//记录子树大小、父亲</span></span><br><span class="line">    dep[u]=dep[f]+<span class="number">1</span>;<span class="comment">//记录深度</span></span><br><span class="line">    <span class="keyword">int</span> maxs=<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;x:e[u])&#123;<span class="comment">//C++11写法</span></span><br><span class="line">        <span class="keyword">int</span> v=x.to,w=x.w;</span><br><span class="line">        <span class="keyword">if</span>(v==f)<span class="keyword">continue</span>;</span><br><span class="line">        dist[v]=dist[u]+w;<span class="comment">//一定不能在dfs子节点后求dist，因为这样儿子没求先求了孙子</span></span><br><span class="line">        dfs1(v,u);</span><br><span class="line">        siz[u]+=siz[v];</span><br><span class="line">        <span class="keyword">if</span>(siz[v]&gt;maxs)&#123;</span><br><span class="line">            son[u]=v;<span class="comment">//记录重儿子</span></span><br><span class="line">            maxs=siz[v];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> f)</span></span>&#123;</span><br><span class="line">    id[u]=++tot;<span class="comment">//记录新编号</span></span><br><span class="line">    dfn[tot]=u;<span class="comment">//编号映射</span></span><br><span class="line">    top[u]=f;<span class="comment">//记录重链的顶端</span></span><br><span class="line">    <span class="keyword">if</span>(!son[u])<span class="keyword">return</span>;</span><br><span class="line">    dfs2(son[u],f);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;x:e[u])&#123;</span><br><span class="line">        <span class="keyword">int</span> v=x.to;</span><br><span class="line">        <span class="keyword">if</span>(id[v])<span class="keyword">continue</span>;</span><br><span class="line">        dfs2(v,v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来是 $\mathcal O(1)$ 求 $\texttt{DIST}$ 了！</p>
+<p>注意到一个性质：<code>real_dis(u,v)=dist[u]+dist[v]-2*dist[lca(u,v)]</code></p>
+<p>（real_dis=真实距离，待会还有相对距离）</p>
+<p>可以用一张图来理解：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/jm83l7ke.png" alt=""></p>
+<p><del>没错这就是lxl的图</del></p>
+<p>然后直接运算就完了。。。</p>
+<h3 id="DIST-Code"><a href="#DIST-Code" class="headerlink" title="DIST Code"></a>DIST Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">il <span class="keyword">int</span> <span class="title">lca</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(;top[u]!=top[v]&amp;&amp;u!=rt;u=fa[top[u]])</span><br><span class="line">        <span class="keyword">if</span>(dep[top[u]]&lt;dep[top[v]])swap(u,v);</span><br><span class="line">    <span class="keyword">return</span> dep[u]&lt;dep[v]?u:v;</span><br><span class="line">&#125;<span class="comment">//见P3379</span></span><br><span class="line"><span class="function">il <span class="keyword">int</span> <span class="title">real_dis</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span>&#123;<span class="keyword">return</span> dist[u]+dist[v]<span class="number">-2</span>*dist[lca(u,v)];&#125;</span><br></pre></td></tr></table></figure>
+<p>最后是 $\mathcal O(\log n)$ 求 $\texttt{KTH}$</p>
+<p>我们要用到相对距离，即假设边权为 $1$ 时的真实距离，用于求两点间节点个数。和真实距离同理，<code>rela_dis(u,v)=dep[u]+dep[v]-2*dep[lca(u,v)]</code>，此时只要判断第k个节点在LCA的左边还是右边，就能把问题转化成求u的k级祖先或者v的rela-k级祖先。</p>
+<h3 id="KTH-Code"><a href="#KTH-Code" class="headerlink" title="KTH Code"></a>KTH Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">il <span class="keyword">int</span> <span class="title">kth</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(;id[u]-id[top[u]]&lt;k;u=fa[top[u]])</span><br><span class="line">        k-=dep[u]-dep[top[u]]+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> dfn[id[u]-k];</span><br><span class="line">&#125;<span class="comment">//见P5903</span></span><br><span class="line">...</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;x,&amp;y,&amp;z);z--;</span><br><span class="line"><span class="keyword">int</span> dis=rela_dis(x,y),LCA=lca(x,y);</span><br><span class="line"><span class="keyword">if</span>(rela_dis(x,LCA)&gt;=z)<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,kth(x,z));</span><br><span class="line"><span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,kth(y,dis-z));</span><br></pre></td></tr></table></figure>
+<p>完结撒花~</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ADay526.github.io/%E9%A2%98%E8%A7%A3%20P3076%20%E3%80%90%5BUSACO13FEB%5DTaxi%20G%E3%80%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ADay526">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ADay's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/%E9%A2%98%E8%A7%A3%20P3076%20%E3%80%90%5BUSACO13FEB%5DTaxi%20G%E3%80%91/" itemprop="url">题解 P3076 【[USACO13FEB]Taxi G】</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-21T17:50:48+08:00">
+                2020-09-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>昨天 $\texttt{zwj}$ 老师 在 $\texttt{贪心}$ 专题讲了这道题，特此水一篇题解。</p>
+<p>（其实是因为一个多月没写题解了，感觉社区分会掉下70）</p>
+<p>先以样例为例子来看看： </p>
+<p>（但为了突出其某些性质，把 $s1$ 改为了 $2$，但其答案不变） </p>
+<blockquote>
+<p>$\texttt{Bessie}$ 从 $0$ 号站到 $2$ 号站接第 $1$ 个客户（$2$ 站），从 $2$ 号站出发到 $6$ 号站（$4$ 站），放下第 $1$个客户，接第 $2$ 个客户，送到 $5$ 号站再回来（$2$ 站），再接第 $1$ 个客户，送到 $9$ 号点（$3$ 站），然后自己走到 $10$ 号点（$1$ 站），共 $12$ 站。  </p>
+</blockquote>
+<p>那么画出图来是这样的（$p_1-&gt;p_8$）：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/tompelkw.png" alt=""></p>
+<p>我们不难发现，$\texttt{Bessie}$ 走的路程，即 $ans$，必然满足 $ans \ge \sum\limits_{i=1}^n |s_i-t_i|$。</p>
+<p>那么，思考一下，$ans$ 比 $\sum\limits_{i=1}^n |s_i-t_i|$ 多出来了什么呢？/yiw</p>
+<p>来画个图吧~</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/bidjrwf5.png" alt=""></p>
+<p>如图，红线即为多出的部分，可能你还是看不出什么。那么我们把 $\texttt{Bessie}$ 看成一只从 $M$ 走到 $0$ 的牛，即 $s_0-&gt;t_0$ </p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/on2rss2b.png" alt=""></p>
+<p>可以发现，红线都是一条 $s_i$ 到 $t_j$ 的线，且每个 $s$ 和 $t$ 都被包含了，所以 $ans=\sum\limits_{i=1}^n |s_i-t_i|+\sum |s_i-t_j|$。又因为 $\sum\limits_{i=1}^n |s_i-t_i|$ 是定值，我们的任务就是最小化 $\sum |s_i-t_j|$。</p>
+<p>然后把 $s$ 和 $t$ 排序即可。设 $s,t$ 排序后分别为 $a,b$ ，则 $ans=\sum\limits_{i=1}^n |s_i-t_i|+\sum\limits_{i=0}^n |a_i-b_i|$（别忘了 $\texttt{Bessie}$ 的路程）。</p>
+<p>那么为什么排序相减就最小呢？因为任意交换同数组两个数<strong>必然会使结果增大</strong>。</p>
+<p>$\texttt{Ugly Code:}$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> i64 long long<span class="comment">//不开ll见祖宗</span></span></span><br><span class="line"><span class="keyword">namespace</span> io&#123;<span class="keyword">static</span> streambuf *inbuf=<span class="built_in">cin</span>.rdbuf();<span class="keyword">static</span> streambuf *outbuf=<span class="built_in">cout</span>.rdbuf();<span class="keyword">char</span> buf[<span class="number">1</span>&lt;&lt;<span class="number">21</span>],*p1=buf,*p2=buf;<span class="function"><span class="keyword">inline</span> <span class="keyword">char</span> <span class="title">gc</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> (p1==p2&amp;&amp;(p2=(p1=buf)+inbuf-&gt;sgetn(buf,<span class="number">1</span>&lt;&lt;<span class="number">21</span>),p1==p2)?EOF:*p1++);&#125;<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pc</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> x)</span></span>&#123;<span class="keyword">static</span> streambuf *outbuf=<span class="built_in">cout</span>.rdbuf();outbuf-&gt;sputc(x);&#125;<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">ps</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *x)</span></span>&#123;<span class="keyword">unsigned</span> _len=<span class="built_in">strlen</span>(x);<span class="keyword">for</span>(<span class="keyword">unsigned</span> i=<span class="number">0</span>;i&lt;_len;i++)pc(x[i]);&#125;<span class="function"><span class="keyword">inline</span> i64 <span class="title">read</span><span class="params">()</span></span>&#123;<span class="keyword">register</span> <span class="keyword">int</span> _s=<span class="number">0</span>,_f=<span class="number">1</span>;<span class="keyword">register</span> <span class="keyword">char</span> _ch=gc();<span class="keyword">for</span>(;!<span class="built_in">isdigit</span>(_ch);_ch=gc())<span class="keyword">if</span>(_ch==<span class="string">'-'</span>)_f=<span class="number">-1</span>;<span class="keyword">for</span>(;<span class="built_in">isdigit</span>(_ch);_ch=gc())_s=_s*<span class="number">10l</span>l+_ch-<span class="string">'0'</span>;<span class="keyword">return</span> _s*_f;&#125;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(T _x1)</span></span>&#123;<span class="keyword">if</span>(_x1&lt;<span class="number">0</span>)pc(<span class="string">'-'</span>),_x1=-_x1;<span class="keyword">static</span> <span class="keyword">char</span> _sta[<span class="number">15</span>];<span class="keyword">int</span> _p=<span class="number">0</span>;<span class="keyword">do</span>&#123;_sta[_p++]=_x1%<span class="number">10</span>^<span class="number">48</span>;_x1/=<span class="number">10</span>;&#125;<span class="keyword">while</span>(_x1);<span class="keyword">while</span>(_p--)pc(_sta[_p]);&#125;<span class="built_in">string</span> _s;<span class="function"><span class="keyword">inline</span> <span class="built_in">string</span> <span class="title">readstr</span><span class="params">()</span></span>&#123;_s.clear();<span class="keyword">register</span> <span class="keyword">char</span> _ch=gc();<span class="keyword">while</span>(<span class="built_in">isspace</span>(_ch))_ch=gc();<span class="keyword">for</span>(;!<span class="built_in">isspace</span>(_ch);_ch=gc())_s+=_ch;<span class="keyword">return</span> _s;&#125;<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">writestr</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span> _s)</span></span>&#123;<span class="keyword">for</span>(<span class="keyword">unsigned</span> i=<span class="number">0</span>;i&lt;_s.size();++i)pc(_s[i]);&#125;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">writeln</span><span class="params">(<span class="keyword">const</span> T _x)</span></span>&#123;write(_x);pc(<span class="number">10</span>);&#125;&#125;<span class="keyword">using</span> <span class="keyword">namespace</span> io;</span><br><span class="line"><span class="comment">//IO优化</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e5</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line">i64 ans,s[maxn],t[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=read();m=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		s[i]=read();t[i]=read();</span><br><span class="line">		ans+=<span class="built_in">abs</span>(s[i]-t[i]);<span class="comment">//Σ|si-ti|</span></span><br><span class="line">	&#125;</span><br><span class="line">	s[<span class="number">0</span>]=m;t[<span class="number">0</span>]=<span class="number">0</span>;<span class="comment">//Bessie的路程</span></span><br><span class="line">	sort(s,s+n+<span class="number">1</span>);sort(t,t+n+<span class="number">1</span>);<span class="comment">//排序啦</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)</span><br><span class="line">		ans+=<span class="built_in">abs</span>(s[i]-t[i]);<span class="comment">//min(Σ|si-tj|)</span></span><br><span class="line">	writeln(ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ADay526.github.io/%E9%A2%98%E8%A7%A3%20P6688%20%E3%80%90%E5%8F%AF%E9%87%8D%E9%9B%86%E3%80%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ADay526">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ADay's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/%E9%A2%98%E8%A7%A3%20P6688%20%E3%80%90%E5%8F%AF%E9%87%8D%E9%9B%86%E3%80%91/" itemprop="url">题解 P6688 【可重集】</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-06T09:48:51+08:00">
+                2020-08-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>一种rp只要好一点就不会被hack的玄学方法。。。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/%E9%A2%98%E8%A7%A3%20P6688%20%E3%80%90%E5%8F%AF%E9%87%8D%E9%9B%86%E3%80%91/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://ADay526.github.io/%E9%A2%98%E8%A7%A3%20P2412%20%E3%80%90%E6%9F%A5%E5%8D%95%E8%AF%8D%E3%80%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1162,378 +1561,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ADay526.github.io/NOIOL3%E8%87%AA%E9%97%AD%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ADay526">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ADay's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/NOIOL3%E8%87%AA%E9%97%AD%E8%AE%B0/" itemprop="url">NOIOL3自闭记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-24T22:07:33+08:00">
-                2020-05-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>自闭了…</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/NOIOL3%E8%87%AA%E9%97%AD%E8%AE%B0/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ADay526.github.io/%E9%A2%98%E8%A7%A3%20CF1352B%20%E3%80%90Same%20Parity%20Summands%E3%80%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ADay526">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ADay's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/%E9%A2%98%E8%A7%A3%20CF1352B%20%E3%80%90Same%20Parity%20Summands%E3%80%91/" itemprop="url">题解 CF1352B 【Same Parity Summands】</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-23T18:16:24+08:00">
-                2020-05-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>这题无疑就是分几个类，如下：</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/%E9%A2%98%E8%A7%A3%20CF1352B%20%E3%80%90Same%20Parity%20Summands%E3%80%91/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ADay526.github.io/%E9%A2%98%E8%A7%A3%20CF1352C%20%E3%80%90K-th%20Not%20Divisible%20by%20n%E3%80%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ADay526">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ADay's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/%E9%A2%98%E8%A7%A3%20CF1352C%20%E3%80%90K-th%20Not%20Divisible%20by%20n%E3%80%91/" itemprop="url">题解 CF1352C 【K-th Not Divisible by n】</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-23T18:15:36+08:00">
-                2020-05-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>求第$k$个不被$n$整除的数  </p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/%E9%A2%98%E8%A7%A3%20CF1352C%20%E3%80%90K-th%20Not%20Divisible%20by%20n%E3%80%91/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1584,7 +1611,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-count">67</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

@@ -102,7 +102,7 @@
 <meta property="og:description" content="求第$k$个不被$n$整除的数">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-05-23T10:15:36.858Z">
-<meta property="article:modified_time" content="2020-05-23T11:20:48.856Z">
+<meta property="article:modified_time" content="2020-08-26T10:07:54.777Z">
 <meta property="article:author" content="ADay526">
 <meta property="article:tag" content="CF题解">
 <meta name="twitter:card" content="summary">
@@ -376,7 +376,44 @@
       
         <p>求第$k$个不被$n$整除的数  </p>
 <a id="more"></a>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>首先可以想到暴力枚举，但是看到数据范围，肯定会TLE.<br>那么就得换一个思路了。<br>我们按每个正整数对$n$除的<strong>商和余</strong>可以得到一个表格:<br>|        1 |        2 | $\cdots$ |      $n-1$ |      $n$ |<br>| ———-: | ———-: | ———-: | ————-: | ———-: |<br>|    $n+1$ |    $n+2$ | $\cdots$ |     $2n-1$ |     $2n$ |<br>| $\cdots$ | $\cdots$ | $\cdots$ |   $\cdots$ | $\cdots$ |<br>|   $xn+1$ |   $xn+2$ | $\cdots$ | $(x+1)n-1$ | $(x+1)n$ |<br>由于我们只要不被$n$整除的，那么就把最后一列去掉:<br>|        1 |        2 | $\cdots$ |      $n-1$ |<br>| ———-: | ———-: | ———-: | ————-: |<br>|    $n+1$ |    $n+2$ | $\cdots$ |     $2n-1$ |<br>| $\cdots$ | $\cdots$ | $\cdots$ |   $\cdots$ |<br>|   $xn+1$ |   $xn+2$ | $\cdots$ | $(x+1)n-1$ |<br>现在就要求表格里的第$k$个数。不难发现，第$k$个数就在第$x=\left\lceil\dfrac{k}{n-1}\right\rceil$行第$y=(k-1) \bmod (n-1)<br>+1$列，那么这个数就是$n(x-1)+y$，直接计算即可  </p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>首先可以想到暴力枚举，但是看到数据范围，肯定会TLE.<br>那么就得换一个思路了。<br>我们按每个正整数对$n$除的<strong>商和余</strong>可以得到一个表格:  </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:right">1</th>
+<th style="text-align:right">2</th>
+<th style="text-align:right">$\cdots$</th>
+<th style="text-align:right">$n-1$</th>
+<th style="text-align:right">$n$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">$n+1$</td>
+<td style="text-align:right">$n+2$</td>
+<td style="text-align:right">$\cdots$</td>
+<td style="text-align:right">$2n-1$</td>
+<td style="text-align:right">$2n$</td>
+</tr>
+<tr>
+<td style="text-align:right">$\cdots$</td>
+<td style="text-align:right">$\cdots$</td>
+<td style="text-align:right">$\cdots$</td>
+<td style="text-align:right">$\cdots$</td>
+<td style="text-align:right">$\cdots$</td>
+</tr>
+<tr>
+<td style="text-align:right">$xn+1$</td>
+<td style="text-align:right">$xn+2$</td>
+<td style="text-align:right">$\cdots$</td>
+<td style="text-align:right">$(x+1)n-1$</td>
+<td style="text-align:right">$(x+1)n$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>由于我们只要不被$n$整除的，那么就把最后一列去掉:<br>|        1 |        2 | $\cdots$ |      $n-1$ |<br>| ———-: | ———-: | ———-: | ————-: |<br>|    $n+1$ |    $n+2$ | $\cdots$ |     $2n-1$ |<br>| $\cdots$ | $\cdots$ | $\cdots$ |   $\cdots$ |<br>|   $xn+1$ |   $xn+2$ | $\cdots$ | $(x+1)n-1$ |<br>现在就要求表格里的第$k$个数。不难发现，第$k$个数就在第$x=\left\lceil\dfrac{k}{n-1}\right\rceil$行第$y=(k-1) \bmod (n-1)<br>+1$列，那么这个数就是$n(x-1)+y$，直接计算即可  </p>
 <h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">readint</span><span class="params">(<span class="keyword">int</span> &amp;x)</span><span class="comment">//快读</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> f=<span class="number">1</span>;x=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> ch=getchar();</span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(ch==<span class="string">'-'</span>)f=<span class="number">-1</span>;</span><br><span class="line">        ch=getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))</span><br><span class="line">    &#123;</span><br><span class="line">        x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+ch<span class="number">-48</span>;</span><br><span class="line">        ch=getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    x*=f;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">int</span> t,n,k;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">myceil</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;<span class="keyword">return</span> x%y?x/y+<span class="number">1</span>:x/y;&#125;<span class="comment">//x/y的向上取整</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    readint(t);</span><br><span class="line">    <span class="keyword">while</span>(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        readint(n),readint(k);</span><br><span class="line">        <span class="keyword">int</span> x=myceil(k,n<span class="number">-1</span>),y=(k<span class="number">-1</span>)%(n<span class="number">-1</span>)+<span class="number">1</span>;<span class="comment">//计算行列</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,n*(x<span class="number">-1</span>)+y);<span class="comment">//输出答案</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -498,7 +535,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-count">67</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
