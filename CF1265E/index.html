@@ -94,15 +94,15 @@
 
 
 
-<meta name="description" content="Solution我们可以列出 $n$ 个概率方程，然后手玩方程即可。 设第 $i$ 个镜子开始的期望天数为 $x_i$，通过第 $i$ 面镜子的概率为 $p_i$，则依题意有： x_i&#x3D;p_i(x_{i+1}+1)+(1-p_i)(x_1+1)并且，$x_{n+1}&#x3D;0$，要求解 $x_1$ 。 由上，$x_1&#x3D;\dfrac{1}{p_1}+x_2&#x3D;\dfrac{\dfrac{1}{p_1}+1}">
+<meta name="description" content="Solution我们可以列出 $n$ 个概率方程，然后手玩方程即可。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CF1265E">
 <meta property="og:url" content="https://aday526.github.io/CF1265E/index.html">
 <meta property="og:site_name" content="ADay&#39;s blog">
-<meta property="og:description" content="Solution我们可以列出 $n$ 个概率方程，然后手玩方程即可。 设第 $i$ 个镜子开始的期望天数为 $x_i$，通过第 $i$ 面镜子的概率为 $p_i$，则依题意有： x_i&#x3D;p_i(x_{i+1}+1)+(1-p_i)(x_1+1)并且，$x_{n+1}&#x3D;0$，要求解 $x_1$ 。 由上，$x_1&#x3D;\dfrac{1}{p_1}+x_2&#x3D;\dfrac{\dfrac{1}{p_1}+1}">
+<meta property="og:description" content="Solution我们可以列出 $n$ 个概率方程，然后手玩方程即可。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-03-21T10:16:14.584Z">
-<meta property="article:modified_time" content="2021-03-21T10:16:14.788Z">
+<meta property="article:modified_time" content="2021-03-24T14:55:19.840Z">
 <meta property="article:author" content="ADay526">
 <meta name="twitter:card" content="summary">
 
@@ -374,6 +374,7 @@
 
       
         <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>我们可以列出 $n$ 个概率方程，然后手玩方程即可。</p>
+<a id="more"></a>
 <p>设第 $i$ 个镜子开始的期望天数为 $x_i$，通过第 $i$ 面镜子的概率为 $p_i$，则依题意有：</p>
 <script type="math/tex; mode=display">x_i=p_i(x_{i+1}+1)+(1-p_i)(x_1+1)</script><p>并且，$x_{n+1}=0$，要求解 $x_1$ 。</p>
 <p>由上，$x_1=\dfrac{1}{p_1}+x_2=\dfrac{\dfrac{1}{p_1}+1}{p_2}+x_3=\dfrac{\dfrac{\dfrac{1}{p_1}+1}{p_2}+1}{p_3}+x_4=\cdots=\dfrac{\dfrac{\dfrac{\cdots+1}{p_{n-2}}+1}{p_{n-1}}+1}{p_n}$</p>
