@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="游记," />
+  <meta name="keywords" content="ADay" />
 
 
 
@@ -94,17 +94,16 @@
 
 
 
-<meta name="description" content="自闭了…">
+<meta name="description" content="Solution简化题意：求 $\sum\limits_{i&#x3D;1}^n\sum\limits_{j&#x3D;1}^m [\text{lcm}(i,j)&#x3D;&#x3D;i\times j]$。 直接推柿子，由 $\text{lcm}(i,j)&#x3D;\dfrac{i\times j}{\gcd(i,j)}$，原式化为：$\sum\limits_{i&#x3D;1}^n\sum\limits_{j&#x3D;1}^m [\dfrac{i\time">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NOIOL3自闭记">
-<meta property="og:url" content="https://aday526.github.io/NOIOL3%E8%87%AA%E9%97%AD%E8%AE%B0/index.html">
+<meta property="og:title" content="题解 UVA12888 【Count LCM】">
+<meta property="og:url" content="https://aday526.github.io/%E9%A2%98%E8%A7%A3%20UVA12888%20%E3%80%90Count%20LCM%E3%80%91/index.html">
 <meta property="og:site_name" content="ADay&#39;s blog">
-<meta property="og:description" content="自闭了…">
+<meta property="og:description" content="Solution简化题意：求 $\sum\limits_{i&#x3D;1}^n\sum\limits_{j&#x3D;1}^m [\text{lcm}(i,j)&#x3D;&#x3D;i\times j]$。 直接推柿子，由 $\text{lcm}(i,j)&#x3D;\dfrac{i\times j}{\gcd(i,j)}$，原式化为：$\sum\limits_{i&#x3D;1}^n\sum\limits_{j&#x3D;1}^m [\dfrac{i\time">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-05-24T14:07:33.552Z">
-<meta property="article:modified_time" content="2020-10-07T14:47:22.630Z">
+<meta property="article:published_time" content="2020-10-31T10:46:52.997Z">
+<meta property="article:modified_time" content="2020-10-31T11:12:52.280Z">
 <meta property="article:author" content="ADay526">
-<meta property="article:tag" content="游记">
 <meta name="twitter:card" content="summary">
 
 
@@ -134,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="https://ADay526.github.io/NOIOL3自闭记/"/>
+  <link rel="canonical" href="https://ADay526.github.io/题解 UVA12888 【Count LCM】/"/>
 
 
 
 
 
-  <title>NOIOL3自闭记 | ADay's blog</title>
+  <title>题解 UVA12888 【Count LCM】 | ADay's blog</title>
   
 
 
@@ -307,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ADay526.github.io/NOIOL3%E8%87%AA%E9%97%AD%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="https://ADay526.github.io/%E9%A2%98%E8%A7%A3%20UVA12888%20%E3%80%90Count%20LCM%E3%80%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ADay526">
@@ -324,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">NOIOL3自闭记</h1>
+          <h1 class="post-title" itemprop="name headline">题解 UVA12888 【Count LCM】</h1>
         
 
         <div class="post-meta">
@@ -336,8 +335,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-24T22:07:33+08:00">
-                2020-05-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-10-31T18:46:52+08:00">
+                2020-10-31
               </time>
             
 
@@ -374,70 +373,13 @@
       
 
       
-        <p>自闭了…</p>
-<a id="more"></a>
-<h2 id="mathcal-Day-0"><a href="#mathcal-Day-0" class="headerlink" title="$\mathcal{Day}0$"></a>$\mathcal{Day}0$</h2><p>这天我妈朋友的生日，晚上大吃了一顿，很晚才回家。</p>
-<p>差不多凌晨1点才睡，早上又要考tg，睡不够呀/kk</p>
-<h2 id="mathcal-Day-1"><a href="#mathcal-Day-1" class="headerlink" title="$\mathcal{Day}1$"></a>$\mathcal{Day}1$</h2><h3 id="8-00"><a href="#8-00" class="headerlink" title="$8:00$"></a>$8:00$</h3><p>被闹钟弄醒了，起来先刷了牙才到书房开电脑，差不多就开始了</p>
-<p>考试服务器好评，没怎么炸（至少我吧</p>
-<p>先康康$T1$,第一眼看上去像个贪心，想了想发现就是求最大连续$k+1$个数之和，然后$\texttt{写代码+对拍}$,一个小时很快就过了，<del>签到</del>题我就搞了1h…</p>
-<p><code>自闭.gif</code></p>
-<p>然后$T2$,emm…先打个暴力。。。打完了。。。后面不会了。。。</p>
-<p>果然$\huge{wtcl}$</p>
-<p><code>自闭.gif</code></p>
-<p>康康$T3$,不会。。。随机数$++luck$吧</p>
-<p><code>自闭.gif</code></p>
-<p>然后就回床上补补觉了</p>
-<p>预估得分:100+20+0</p>
-<p>中午拿到洛谷测:100+0+0</p>
-<p>T2爆零，4个RE,回去看看代码发现数组开小了…</p>
-<p><code>自闭.gif</code>  </p>
-<hr>
-<p>中午本来想写会作业，<del>受到我妈的邀请</del>看了一期$\text{最强大脑}$，没想到还看到了一个学长——<a href="https://baike.baidu.com/item/%E9%BB%84%E6%98%8E%E7%9D%BF/4867075?fr=aladdin" target="_blank" rel="noopener">数独国家队的黄明睿巨佬</a> ccccccorz  </p>
-<p><a href="http://wb.sznews.com/MB/content/202005/19/content_860465.html" target="_blank" rel="noopener">这位奆学长表现还很好呢</a></p>
-<hr>
-<h3 id="14-30"><a href="#14-30" class="headerlink" title="$14:30$"></a>$14:30$</h3><p>下午rm，不会像之前那么难吧</p>
-<p>康康T1,第一反应kmp(只听说过是字符串匹配，没学过),然后康康数据范围，我想多了。。。</p>
-<p>于是打了个暴力，花了大概30min</p>
-<p>看看T2，居然还挺简单，随便打了个dfs,就去看T3了</p>
-<p>emm…好像是多重背包？忘了咋打了</p>
-<p>于是乱搞了个01背包，样例都没过</p>
-<p>然后两小时拼命想，还是没想出来，感觉自己是真的不会</p>
-<p><code>自闭.gif</code></p>
-<p>剩下半个小时把T2的dfs换成了bfs,调到自闭后终于调好了，<del>然后就没时间了</del></p>
-<p><code>自闭.gif</code></p>
-<p>预估：100+100+0</p>
-<p>你谷：100+?+30</p>
-<p>T3有30？？？但听说你谷人均AK</p>
-<p><code>自闭.gif</code></p>
-<p>$\Huge{我\;自\;闭\;了(}$</p>
-<h2 id="mathcal-Day-2"><a href="#mathcal-Day-2" class="headerlink" title="$\mathcal{Day}2$"></a>$\mathcal{Day}2$</h2><p><del>怎么你谷rmT2数据还没好啊啊啊(不是催</del>  </p>
-<p>明天我就13岁了，提前祝我生日快乐   </p>
-<h2 id="mathcal-Day-3"><a href="#mathcal-Day-3" class="headerlink" title="$\mathcal{Day}3$"></a>$\mathcal{Day}3$</h2><p><del>先祝自己生快</del></p>
-<p>你谷rmT2果然过了，改成bfs果然没有问题</p>
-<p>但是dfs也能过<del>那我花30min改有什么用啊！！！还不如去想T3</del></p>
-<p><code>自闭.gif</code></p>
-<p>后面再看看实际成绩会有什么波动吧  </p>
-<h2 id="mathcal-Day-4"><a href="#mathcal-Day-4" class="headerlink" title="$\mathcal{Day}4$"></a>$\mathcal{Day}4$</h2><p>出分了。。。</p>
-<p>实际得分：</p>
-<p>rm:100+100+0 </p>
-<p>和预估一样，T3果然没分…</p>
-<p><code>自闭.gif</code></p>
-<p>tg:0+0+0</p>
-<p>啊这…</p>
-<p>T1爆零？？？</p>
-<p>T1爆零？？？</p>
-<p>T1爆零？？？</p>
-<p>感觉是把文件注释掉了吧，又是sb错误…</p>
-<p><code>自闭.gif</code></p>
-<hr>
-<h2 id="text总结-amp-text反思"><a href="#text总结-amp-text反思" class="headerlink" title="$\text总结$&amp;$\text反思$"></a>$\text总结$&amp;$\text反思$</h2><p>只有rm进了前$25\%$,惭愧啊…</p>
-<p><del>进入正经</del></p>
-<p>这次比赛给我带来了许多经验，也让我吸取了一些教训，就比如tgT1的未知错误，可能是没有保存或文件挂了<del>就算有T1也没法进25%</del>，以后我会在noip之类的OI比赛中仔细检查代码，不犯sb错误</p>
-<p>还有，就是我深深地感到自己的$\Huge蒻$,希望将来我能更加认真学习算法知识，获得自己梦寐以求的荣誉</p>
-<hr>
-<p>已完不待续,$not\;updating$中</p>
-<p>欢迎各位dalao在下方评论区d这个蒟蒻</p>
+        <h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>简化题意：求 $\sum\limits_{i=1}^n\sum\limits_{j=1}^m [\text{lcm}(i,j)==i\times j]$。</p>
+<p>直接推柿子，由 $\text{lcm}(i,j)=\dfrac{i\times j}{\gcd(i,j)}$，原式化为：$\sum\limits_{i=1}^n\sum\limits_{j=1}^m [\dfrac{i\times j}{\gcd(i,j)}==i\times j]$ ，即 $\sum\limits_{i=1}^n\sum\limits_{j=1}^m [\gcd(i,j)==1]$。</p>
+<p>根据莫反，又化为 $\sum\limits_{i=1}^n\sum\limits_{j=1}^m\sum\limits_{d|\gcd(i,j)}\mu(d)$。</p>
+<p>然后可以改变枚举顺序，先枚举因数 $d$，得  $\sum\limits_{d=1}\mu(d)\sum\limits_{i=1}^n[d|i]\sum\limits_{j=1}^m[d|j]$。</p>
+<p>发现 $\sum\limits_{i=1}^n[d|i]$ 是在求 $1\sim n$ 中 $d$ 的倍数，可直接得 $\lfloor \dfrac{n}{d} \rfloor$。那么原式又可变为 $\sum\limits_{d=1}\mu(d)\lfloor \dfrac{n}{d} \rfloor\lfloor \dfrac{m}{d} \rfloor$。</p>
+<p>这样的式子显然可以预处理 $\mu$ 前缀和然后整除分块，总复杂度 $\mathcal O(10^6+T\sqrt{\min(n,m)})$。</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> il inline</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TT template<span class="meta-string">&lt;typename T&gt;</span></span></span><br><span class="line"><span class="keyword">namespace</span> io&#123;<span class="keyword">static</span> streambuf *inbuf=<span class="built_in">cin</span>.rdbuf();<span class="keyword">static</span> streambuf *outbuf=<span class="built_in">cout</span>.rdbuf();<span class="keyword">char</span> buf[<span class="number">1</span>&lt;&lt;<span class="number">21</span>],*p1=buf,*p2=buf;<span class="function"><span class="keyword">inline</span> <span class="keyword">char</span> <span class="title">gc</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> (p1==p2&amp;&amp;(p2=(p1=buf)+inbuf-&gt;sgetn(buf,<span class="number">1</span>&lt;&lt;<span class="number">21</span>),p1==p2)?EOF:*p1++);&#125;<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pc</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> x)</span></span>&#123;<span class="keyword">static</span> streambuf *outbuf=<span class="built_in">cout</span>.rdbuf();outbuf-&gt;sputc(x);&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;<span class="keyword">register</span> <span class="keyword">int</span> _s=<span class="number">0</span>,_f=<span class="number">1</span>;<span class="keyword">register</span> <span class="keyword">char</span> _ch=gc();<span class="keyword">for</span>(;!<span class="built_in">isdigit</span>(_ch);_ch=gc())<span class="keyword">if</span>(_ch==<span class="string">'-'</span>)_f=<span class="number">-1</span>;<span class="keyword">for</span>(;<span class="built_in">isdigit</span>(_ch);_ch=gc())_s=_s*<span class="number">10</span>+_ch-<span class="string">'0'</span>;<span class="keyword">return</span> _s*_f;&#125;<span class="function">TT <span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span></span>&#123;x=<span class="number">0</span>;<span class="keyword">register</span> <span class="keyword">int</span> _f=<span class="number">1</span>;<span class="keyword">register</span> <span class="keyword">char</span> _ch=gc();<span class="keyword">for</span>(;!<span class="built_in">isdigit</span>(_ch);_ch=gc())<span class="keyword">if</span>(_ch==<span class="string">'-'</span>)_f=<span class="number">-1</span>;<span class="keyword">for</span>(;<span class="built_in">isdigit</span>(_ch);_ch=gc())x=x*<span class="number">10</span>+_ch-<span class="string">'0'</span>;x*=_f;&#125;</span><br><span class="line"><span class="function">TT <span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(T _x1)</span></span>&#123;<span class="keyword">if</span>(_x1&lt;<span class="number">0</span>)pc(<span class="string">'-'</span>),_x1=-_x1;<span class="keyword">static</span> <span class="keyword">char</span> _sta[<span class="number">15</span>];<span class="keyword">int</span> _p=<span class="number">0</span>;<span class="keyword">do</span>&#123;_sta[_p++]=_x1%<span class="number">10</span>^<span class="number">48</span>;_x1/=<span class="number">10</span>;&#125;<span class="keyword">while</span>(_x1);<span class="keyword">while</span>(_p--)pc(_sta[_p]);&#125;<span class="function">TT <span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">writeln</span><span class="params">(<span class="keyword">const</span> T _x)</span></span>&#123;write(_x);pc(<span class="number">10</span>);&#125;<span class="function">TT <span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">writesp</span><span class="params">(<span class="keyword">const</span> T _x)</span></span>&#123;write(_x);pc(<span class="string">' '</span>);&#125;&#125;<span class="keyword">using</span> <span class="keyword">namespace</span> io;</span><br><span class="line"><span class="comment">//IO优化</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e6</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,mu[maxn],pr[maxn];</span><br><span class="line"><span class="keyword">bool</span> isp[maxn];</span><br><span class="line"><span class="function">il <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;<span class="comment">//线性筛mobius前缀和</span></span><br><span class="line">    mu[<span class="number">1</span>]=<span class="number">1</span>;isp[<span class="number">1</span>]=<span class="number">1</span>;<span class="keyword">int</span> tot=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=<span class="number">1e6</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!isp[i])pr[++tot]=i,mu[i]=<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=tot&amp;&amp;i*pr[j]&lt;=<span class="number">1e6</span>;j++)&#123;</span><br><span class="line">            ll num=i*pr[j];</span><br><span class="line">            isp[num]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(i%pr[j]==<span class="number">0</span>)<span class="keyword">break</span>;</span><br><span class="line">            mu[num]=-mu[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=<span class="number">1e6</span>;i++)mu[i]+=mu[i<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">il ll <span class="title">solve</span><span class="params">(ll x,ll y)</span></span>&#123;<span class="comment">//整除分块</span></span><br><span class="line">    ll i,j,res=<span class="number">0</span>;<span class="comment">//记得开ll</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=x&amp;&amp;i&lt;=y;i=j+<span class="number">1</span>)&#123;</span><br><span class="line">        j=min(x/(x/i),y/(y/i));</span><br><span class="line">        res+=<span class="number">1l</span>l*(mu[j]-mu[i<span class="number">-1</span>])*(x/i)*(y/i);</span><br><span class="line">    &#125;<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    init();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> T=read();T--;)&#123;</span><br><span class="line">        n=read();m=read();</span><br><span class="line">        writeln(solve(n,m));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -453,12 +395,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/%E6%B8%B8%E8%AE%B0/" rel="tag"># 游记</a>
-          
-        </div>
-      
 
       
       
@@ -468,8 +404,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/%E9%A2%98%E8%A7%A3%20CF1352B%20%E3%80%90Same%20Parity%20Summands%E3%80%91/" rel="next" title="题解 CF1352B 【Same Parity Summands】">
-                <i class="fa fa-chevron-left"></i> 题解 CF1352B 【Same Parity Summands】
+              <a href="/%E9%A2%98%E8%A7%A3%20P6218%20%E3%80%90%5BUSACO06NOV%5D%20Round%20Numbers%20S%E3%80%91/" rel="next" title="题解 P6218 【[USACO06NOV] Round Numbers S】">
+                <i class="fa fa-chevron-left"></i> 题解 P6218 【[USACO06NOV] Round Numbers S】
               </a>
             
           </div>
@@ -478,8 +414,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/%E9%A2%98%E8%A7%A3%20P1575%20%E3%80%90%E6%AD%A3%E8%AF%AF%E9%97%AE%E9%A2%98%E3%80%91/" rel="prev" title="题解 P1575 【正误问题】">
-                题解 P1575 【正误问题】 <i class="fa fa-chevron-right"></i>
+              <a href="/%E9%A2%98%E8%A7%A3%20CF1036C%20%E3%80%90Classy%20Numbers%E3%80%91/" rel="prev" title="题解 CF1036C 【Classy Numbers】">
+                题解 CF1036C 【Classy Numbers】 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -559,7 +495,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-count">77</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -572,7 +508,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
@@ -607,7 +543,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mathcal-Day-0"><span class="nav-number">1.</span> <span class="nav-text">$\mathcal{Day}0$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mathcal-Day-1"><span class="nav-number">2.</span> <span class="nav-text">$\mathcal{Day}1$</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-00"><span class="nav-number">2.1.</span> <span class="nav-text">$8:00$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-30"><span class="nav-number">2.2.</span> <span class="nav-text">$14:30$</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mathcal-Day-2"><span class="nav-number">3.</span> <span class="nav-text">$\mathcal{Day}2$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mathcal-Day-3"><span class="nav-number">4.</span> <span class="nav-text">$\mathcal{Day}3$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mathcal-Day-4"><span class="nav-number">5.</span> <span class="nav-text">$\mathcal{Day}4$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#text总结-amp-text反思"><span class="nav-number">6.</span> <span class="nav-text">$\text总结$&amp;$\text反思$</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">2.</span> <span class="nav-text">Code</span></a></li></ol></div>
             
 
           </div>
@@ -630,7 +566,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-ADay"></i>
   </span>
