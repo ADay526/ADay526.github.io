@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Archives: 2021 |  ADay&#39;s blog</title>
+      <title>题解 P5308 [COCI2019] Quiz |  ADay&#39;s blog</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/images/em2.jpg" />
@@ -47,99 +47,200 @@
       
     <main class="content on">
       <section class="outer">
-  
-  
-  <article class="articles">
+  <article
+  id="post-题解 P5308 [COCI2019] Quiz"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
     
-    
-    <h1 class="page-type-title">2021</h1>
-    
-    
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2021" class="archive-year">2021</a>
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  题解 P5308 [COCI2019] Quiz
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/%E9%A2%98%E8%A7%A3%20P5308%20%5BCOCI2019%5D%20Quiz/" class="article-date">
+  <time datetime="2021-08-09T04:48:02.150Z" itemprop="datePublished">2021-08-09</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">403</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">2 min</span>
+        </span>
+    </span>
+</div>
+ 
     </div>
-    <div class="archives">
       
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/Godzilla/" class="archive-article-date">
-  <time datetime="2021-05-23T10:38:03.554Z" itemprop="datePublished">05/23</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/Godzilla/"
-    >Godzilla</a> 
-</h2>
- 
 
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/CF1265E/" class="archive-article-date">
-  <time datetime="2021-05-23T10:38:03.503Z" itemprop="datePublished">05/23</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/CF1265E/"
-    >CF1265E</a> 
-</h2>
- 
 
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/about/" class="archive-article-date">
-  <time datetime="2021-05-23T10:38:03.501Z" itemprop="datePublished">05/23</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/about/"
-    >about</a> 
-</h2>
- 
 
-    </header>
-    
-    
-  </div>
-</article>
-      
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>$\text{WQS}$ 二分+斜率优化</p>
+<p>若没有 $k$ 的限制，可以用 $f_i$ 表示剩 $i$ 个人时获得的最大收益，那么当下一轮剩 $j$ 个人时，这一轮就淘汰了 $i-j$ 个人，获得 $\dfrac{i-j}{i}$ 的奖金。</p>
+<p>所以转移方程为 $f_i=\max\{f_j+\dfrac{i-j}{i}\}(j&lt;i)$。</p>
+<p>这个式子显然可以斜率优化，转化为 $y=kx+b$ 的形式，即 $\underline{\huge f_j}_y=\underline{\huge\dfrac{1}{i}}_k\times\underline{\huge j}_x+\underline{\huge f_i-1}_b$。</p>
+<p>现在考虑有 $k$ 的限制，“恰好 $k$ 个”显然是 $\text{WQS}$ 二分的特征，其凸性读者可以自证。<del>我只会打表找规律</del></p>
+<p>另外，此题稍卡精度，所以我加了个时间限制。</p>
+<p>Code</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1e5</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps=<span class="number">1e-20</span>;</span><br><span class="line"><span class="keyword">int</span> n,K;</span><br><span class="line"><span class="keyword">double</span> f[N];</span><br><span class="line"><span class="keyword">int</span> q[N],cnt[N];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">Y</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>&#123;<span class="keyword">return</span> f[i]-f[j];&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">X</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>&#123;<span class="keyword">return</span> i-j;&#125; </span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">slope</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>&#123;<span class="keyword">return</span> Y(i,j)/X(i,j);&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">double</span> k)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l=<span class="number">1</span>,r=<span class="number">1</span>;q[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(cnt,<span class="number">0</span>,<span class="keyword">sizeof</span>(cnt));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">while</span>(l&lt;r&amp;&amp;slope(q[l+<span class="number">1</span>],q[l])&gt;<span class="number">1.0</span>/(<span class="keyword">double</span>)i+eps)l++;</span><br><span class="line">        <span class="keyword">int</span> j=q[l];</span><br><span class="line">        f[i]=f[j]+(<span class="keyword">double</span>)(i-j)/(<span class="keyword">double</span>)i-k;</span><br><span class="line">        cnt[i]=cnt[j]+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(l&lt;r&amp;&amp;slope(q[r],q[r<span class="number">-1</span>])+eps&lt;slope(i,q[r]))r--;</span><br><span class="line">        q[++r]=i;</span><br><span class="line">    &#125;<span class="keyword">return</span> cnt[n]&gt;=K;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;K);</span><br><span class="line">    <span class="keyword">double</span> l=<span class="number">0</span>,r=<span class="number">1e6</span>;</span><br><span class="line">    <span class="keyword">while</span>(l+eps&lt;r&amp;&amp;(<span class="keyword">double</span>)clock()/CLOCKS_PER_SEC&lt;=<span class="number">1.9</span>)&#123;</span><br><span class="line">        <span class="keyword">double</span> mid=(l+r)/<span class="number">2.0</span>;</span><br><span class="line">        <span class="keyword">if</span>(check(mid))l=mid;</span><br><span class="line">        <span class="keyword">else</span> r=mid;</span><br><span class="line">    &#125;<span class="built_in">printf</span>(<span class="string">"%.9lf\n"</span>,f[n]+l*K);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
       
     </div>
-  </div>
-  
-  
-
-  
-  <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/archives/2021/page/3/">上一页</a><a class="page-number" href="/archives/2021/">1</a><a class="page-number" href="/archives/2021/page/2/">2</a><a class="page-number" href="/archives/2021/page/3/">3</a><span class="page-number current">4</span>
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aday526.github.io/%E9%A2%98%E8%A7%A3%20P5308%20[COCI2019]%20Quiz/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/%E9%A2%98%E8%A7%A3%20UVA12888%20%E3%80%90Count%20LCM%E3%80%91/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">题解 UVA12888 【Count LCM】</div>
+      </a>
+    
   </nav>
-  
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "pRfbe73YT5avJajbsK5evXhS-gzGzoHsz",
+    app_key: "6W5Co0HdeW6s2RELlbgQrdOx",
+    path: window.location.pathname,
+    avatar: "retro",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
 </section>
       <footer class="footer">
   <div class="outer">
@@ -276,6 +377,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link
