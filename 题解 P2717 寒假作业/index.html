@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title> ADay&#39;s blog</title>
+      <title>题解 P2717 寒假作业 |  ADay&#39;s blog</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/images/em2.jpg" />
@@ -46,278 +46,200 @@
         style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
       
     <main class="content on">
-      
-<section class="cover">
+      <section class="outer">
+  <article
+  id="post-题解 P2717 寒假作业"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
     
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  题解 P2717 寒假作业
+</h1>
+ 
+
       
-      <a class="forkMe" href="https://github.com/ADay526/ADay526.github.io"
-        target="_blank"><img width="149" height="149" src="/images/forkme.png"
-          class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+    </header>
+     
+    <div class="article-meta">
+      <a href="/%E9%A2%98%E8%A7%A3%20P2717%20%E5%AF%92%E5%81%87%E4%BD%9C%E4%B8%9A/" class="article-date">
+  <time datetime="2021-08-22T10:29:32.864Z" itemprop="datePublished">2021-08-22</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">282</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">1 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>先把 $a_i$ 都减 $k$，那么问题就变为求和 $\ge0$ 的子串个数。</p>
+<p>然后再把减去了 $k$ 的 $\{a\}$ 做前缀和，记为 $\{s\}$，问题又变为求满足 $s_i-s_j\ge0(i&gt;j)$ 的 $(i,j)$ 的个数也就是 $\{s\}$ 的<strong>顺序对</strong>个数，用树状数组或归并排序求就好了 。</p>
+<p>因为我用的是树状数组且没去重，复杂度为 $\mathcal O(n\log10^9)$</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ext/pb_ds/assoc_container.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ext/pb_ds/hash_policy.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> __gnu_pbds;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1e5</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> n,mins=<span class="number">1e9</span>,k,s[N];</span><br><span class="line">ll ans;</span><br><span class="line">gp_hash_table&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;c;<span class="comment">//pbds的哈希表</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">for</span>(;x&lt;=<span class="number">1e9</span>;x+=x&amp;-x)c[x]++;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">ask</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;ll res=<span class="number">0</span>;<span class="keyword">for</span>(;x;x-=x&amp;-x)res+=c[x];<span class="keyword">return</span> res;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;k);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="built_in">scanf</span>(<span class="string">"%d"</span>,s+i),mins=min(mins,s[i]+=s[i<span class="number">-1</span>]-k),ans+=(s[i]&gt;=<span class="number">0</span>);<span class="comment">//统计j=0的情况</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        s[i]-=mins<span class="number">-1</span>;<span class="comment">//使每个Si都&gt;0</span></span><br><span class="line">        ans+=ask(s[i]);</span><br><span class="line">        add(s[i]);</span><br><span class="line">    &#125;<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);<span class="comment">//答案可能爆int</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+    </div>
     
-  <div class="cover-frame">
-    <div class="bg-box">
-      <img src="/images/kd1.jpg" alt="image frame" />
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
     </div>
-    <div class="cover-inner text-center text-white">
-      <h1><a href="/">ADay&#39;s blog</a></h1>
-      <div id="subtitle-box">
-        
-        <span id="subtitle"></span>
-        
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
       </div>
-      <div>
-        
-      </div>
-    </div>
-  </div>
-  <div class="cover-learn-more">
-    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
-  </div>
-</section>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
-
-
-<!-- Subtitle -->
-
-  <script>
-    try {
-      var typed = new Typed("#subtitle", {
-        strings: ['Be yourself, man, be proud of who you are. ——Eminem', 'No such thing as a life that&#39;s better than yours. ——J. Cole', 'Love is just a word, but you bring it definition. ——Eminem'],
-        startDelay: 0,
-        typeSpeed: 200,
-        loop: true,
-        backSpeed: 100,
-        showCursor: true
-      });
-    } catch (err) {
-      console.log(err)
-    }
-  </script>
-  
-<div id="main">
-  <section class="outer">
-  
-  
-  
-<div class="notice" style="margin-top:50px">
-    <i class="ri-heart-fill"></i>
-    <div class="notice-content">Forever and A Day</div>
 </div>
 
-
-<style>
-    .notice {
-        padding: 20px;
-        border: 1px dashed #e6e6e6;
-        color: #969696;
-        position: relative;
-        display: inline-block;
-        width: 100%;
-        background: #fbfbfb50;
-        border-radius: 10px;
-    }
-
-    .notice i {
-        float: left;
-        color: #999;
-        font-size: 16px;
-        padding-right: 10px;
-        vertical-align: middle;
-        margin-top: -2px;
-    }
-
-    .notice-content {
-        display: initial;
-        vertical-align: middle;
-    }
-</style>
-  
-  <article class="articles">
-    
-    
-    
-    
-    <article
-  id="post-GDOI2021PJ游记"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/GDOI2021PJ%E6%B8%B8%E8%AE%B0/"
-    >GDOI2021PJ游记</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/GDOI2021PJ%E6%B8%B8%E8%AE%B0/" class="article-date">
-  <time datetime="2021-05-23T10:38:03.554Z" itemprop="datePublished">2021-05-23</time>
-</a>    
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aday526.github.io/%E9%A2%98%E8%A7%A3%20P2717%20%E5%AF%92%E5%81%87%E4%BD%9C%E4%B8%9A/" alt="微信分享二维码">
     </div>
-       
+</div>
 
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B8%B8%E8%AE%B0/" rel="tag">游记</a></li></ul>
-
+<div id="share-mask"></div>  
     </footer>
   </div>
 
+   
+  <nav class="article-nav">
     
- 
     
-</article>
-
+      <a href="/%E9%A2%98%E8%A7%A3%20P5308%20%5BCOCI2019%5D%20Quiz/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">题解 P5308 [COCI2019] Quiz</div>
+      </a>
     
-    <article
-  id="post-Godzilla"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/Godzilla/"
-    >Godzilla</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/Godzilla/" class="article-date">
-  <time datetime="2021-05-23T10:38:03.554Z" itemprop="datePublished">2021-05-23</time>
-</a>    
-    </div>
-       
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/music/" rel="tag">music</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-CF1265E"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/CF1265E/"
-    >CF1265E</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/CF1265E/" class="article-date">
-  <time datetime="2021-05-23T10:38:03.503Z" itemprop="datePublished">2021-05-23</time>
-</a>    
-    </div>
-       
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dp/" rel="tag">dp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%9F%E6%9C%9Bdp/" rel="tag">期望dp</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-about"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/about/"
-    >about</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/about/" class="article-date">
-  <time datetime="2021-05-23T10:38:03.501Z" itemprop="datePublished">2021-05-23</time>
-</a>    
-    </div>
-       
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-  </article>
-  
-
-  
-  <nav class="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
   </nav>
-  
-</section>
-</div>
 
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "pRfbe73YT5avJajbsK5evXhS-gzGzoHsz",
+    app_key: "6W5Co0HdeW6s2RELlbgQrdOx",
+    path: window.location.pathname,
+    avatar: "retro",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
       <footer class="footer">
   <div class="outer">
     <ul>
@@ -453,6 +375,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link
