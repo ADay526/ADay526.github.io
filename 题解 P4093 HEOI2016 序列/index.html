@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>题解 P2717 寒假作业 |  ADay&#39;s blog</title>
+      <title>题解 P4093 HEOI2016 序列 |  ADay&#39;s blog</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/images/em2.jpg" />
@@ -48,7 +48,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-题解 P2717 寒假作业"
+  id="post-题解 P4093 HEOI2016 序列"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -59,7 +59,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  题解 P2717 寒假作业
+  题解 P4093 HEOI2016 序列
 </h1>
  
 
@@ -67,15 +67,15 @@
     </header>
      
     <div class="article-meta">
-      <a href="/%E9%A2%98%E8%A7%A3%20P2717%20%E5%AF%92%E5%81%87%E4%BD%9C%E4%B8%9A/" class="article-date">
-  <time datetime="2021-08-22T10:29:32.864Z" itemprop="datePublished">2021-08-22</time>
+      <a href="/%E9%A2%98%E8%A7%A3%20P4093%20HEOI2016%20%E5%BA%8F%E5%88%97/" class="article-date">
+  <time datetime="2021-09-05T15:04:33.194Z" itemprop="datePublished">2021-09-05</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">304</span>
+            <span class="post-count">404</span>
         </span>
     </span>
 
@@ -84,7 +84,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">2 min</span>
         </span>
     </span>
 </div>
@@ -99,12 +99,10 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>先把 $a_i$ 都减 $k$，那么问题就变为求和 $\ge0$ 的子串个数。</p>
-<p>然后再把减去了 $k$ 的 $\{a\}$ 做前缀和，记为 $\{s\}$，问题又变为求满足 $s_i-s_j\ge0(i&gt;j)$ 的 $(i,j)$ 的个数也就是 $\{s\}$ 的<strong>顺序对</strong>个数，用树状数组或归并排序求就好了 。</p>
-<p>因为我用的是树状数组且没去重，复杂度为 $\mathcal O(n\log10^9)$</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ext/pb_ds/assoc_container.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ext/pb_ds/hash_policy.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> __gnu_pbds;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1e5</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> n,mins=<span class="number">1e9</span>,k,s[N];</span><br><span class="line">ll ans;</span><br><span class="line">gp_hash_table&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;c;<span class="comment">//pbds的哈希表</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">for</span>(;x&lt;=<span class="number">1e9</span>;x+=x&amp;-x)c[x]++;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">ask</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;ll res=<span class="number">0</span>;<span class="keyword">for</span>(;x;x-=x&amp;-x)res+=c[x];<span class="keyword">return</span> res;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;k);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="built_in">scanf</span>(<span class="string">"%d"</span>,s+i),mins=min(mins,s[i]+=s[i<span class="number">-1</span>]-k),ans+=(s[i]&gt;=<span class="number">0</span>);<span class="comment">//统计j=0的情况</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        s[i]-=mins<span class="number">-1</span>;<span class="comment">//使每个Si都&gt;0</span></span><br><span class="line">        ans+=ask(s[i]);</span><br><span class="line">        add(s[i]);</span><br><span class="line">    &#125;<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);<span class="comment">//答案可能爆int</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注意答案可能爆 $\text{int}$，也证明作业不是 $\text{int}$ 能存下的</p>
- 
+  <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>这显然是求 $\mathsf{LIS}$ 的模板多了两维限制，转移方程为 $f_i=\max\limits_{j&lt;i,a_i\ge mx_j,mn_i\ge a_j}f_j+1$，其中 $f_i$ 表示以 $i$ 结尾的最长子序列，$mx_i,mn_i$ 表示 $a_i$ 能变化到的最大值和最小值，因为介于 $mx_i$ 和 $mn_i$ 之间的数都没有用。  </p>
+<p>对于方程的这三个限制，可以当三维偏序来做，每次用 $f_i$ 更新 $(a_i,mx_i)$ 矩形内的最大值，查询时查 $(mn_i,a_i)$ 内的最大值即可。  </p>
+<p>实现的话，可以用 $\mathsf{CDQ}$ 分治或树套树，这里我用了二维树状数组，用 <code>pb_ds</code> 的哈希表 <code>gp_hash_table</code> 来实现类似的动态开点。  </p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ext/pb_ds/assoc_container.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ext/pb_ds/hash_policy.hpp&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> __gnu_pbds;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1e5</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,mv,ans,a[N],mn[N],mx[N];</span><br><span class="line">gp_hash_table&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;c[N];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=x;i&lt;=mv;i+=i&amp;-i)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=y;j&lt;=mv;j+=j&amp;-j)</span><br><span class="line">			c[i][j]=max(c[i][j],v);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">ask</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=x;i;i-=i&amp;-i)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=y;j;j-=j&amp;-j)</span><br><span class="line">			res=max(res,c[i][j]);</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="built_in">scanf</span>(<span class="string">"%d"</span>,a+i),mv=max(mv,mx[i]=mn[i]=a[i]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,x,y;i&lt;=m;i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">		mx[x]=max(mx[x],y);</span><br><span class="line">		mn[x]=min(mn[x],y);</span><br><span class="line">		mv=max(mv,mx[x]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> res=ask(mn[i],a[i])+<span class="number">1</span>;</span><br><span class="line">		add(a[i],mx[i],res);</span><br><span class="line">		ans=max(ans,res);</span><br><span class="line">	&#125;<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -168,7 +166,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aday526.github.io/%E9%A2%98%E8%A7%A3%20P2717%20%E5%AF%92%E5%81%87%E4%BD%9C%E4%B8%9A/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aday526.github.io/%E9%A2%98%E8%A7%A3%20P4093%20HEOI2016%20%E5%BA%8F%E5%88%97/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -179,19 +177,10 @@
    
   <nav class="article-nav">
     
-      <a href="/%E9%A2%98%E8%A7%A3%20P4093%20HEOI2016%20%E5%BA%8F%E5%88%97/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            题解 P4093 HEOI2016 序列
-          
-        </div>
-      </a>
     
-    
-      <a href="/%E9%A2%98%E8%A7%A3%20P5308%20%5BCOCI2019%5D%20Quiz/" class="article-nav-link">
+      <a href="/%E9%A2%98%E8%A7%A3%20P2717%20%E5%AF%92%E5%81%87%E4%BD%9C%E4%B8%9A/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">题解 P5308 [COCI2019] Quiz</div>
+        <div class="article-nav-title">题解 P2717 寒假作业</div>
       </a>
     
   </nav>
