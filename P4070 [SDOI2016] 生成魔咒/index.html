@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Godzilla |  ADay&#39;s blog</title>
+      <title>P4070 [SDOI2016] 生成魔咒 |  ADay&#39;s blog</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/images/em2.jpg" />
@@ -48,7 +48,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-Godzilla"
+  id="post-P4070 [SDOI2016] 生成魔咒"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -59,7 +59,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Godzilla
+  P4070 [SDOI2016] 生成魔咒
 </h1>
  
 
@@ -67,15 +67,15 @@
     </header>
      
     <div class="article-meta">
-      <a href="/Godzilla/" class="article-date">
-  <time datetime="2021-05-23T10:38:03.554Z" itemprop="datePublished">2021-05-23</time>
+      <a href="/P4070%20%5BSDOI2016%5D%20%E7%94%9F%E6%88%90%E9%AD%94%E5%92%92/" class="article-date">
+  <time datetime="2021-09-05T15:06:31.971Z" itemprop="datePublished">2021-09-05</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">8</span>
+            <span class="post-count">418</span>
         </span>
     </span>
 
@@ -84,21 +84,30 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">2 min</span>
         </span>
     </span>
 </div>
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <script type="math/tex; mode=display">\color{Green}{\Huge\text{Godzilla - Eminem/Juice WRLD}}</script><div style="position: relative; width: 100%;height: 0; padding-bottom: 75%;"><iframe src="//player.bilibili.com/player.html?aid=95080084&bvid=BV1mE411T7mX&cid=192024585&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe></div>
-
+  <h2 id="后缀树题解"><a href="#后缀树题解" class="headerlink" title="后缀树题解"></a>后缀树题解</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>在建后缀树的 $\mathsf{Ukkonen}$ 算法中，是在线插入字符的，所以能很好地解决此问题。</p>
+<p>我们知道，一个字符串的本质不同子串就是其后缀树上所有边长之和，那么只要在每次插入时考虑有哪些边会变化即可。</p>
+<p>因为后缀树是压缩 $\mathsf{Trie}$，所以每次插入只有叶子节点的边会改变。</p>
+<ul>
+<li>当插入成功时，会有分裂节点产生，此时会多一条边长为 $1$ 的边。</li>
+<li>当插入失败时，若要新建节点，也会多一条边长为 $1$ 的边。</li>
+</ul>
+<p>那么在这两处更新答案即可。</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/extc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">2e5</span>+<span class="number">5</span>,inf=<span class="number">1e8</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> cnt,ans;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Suffix_Tree</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> n,tot,now,rem,link[N],s[N],len[N],st[N];</span><br><span class="line">	__gnu_pbds::gp_hash_table&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;ch[N];</span><br><span class="line">	Suffix_Tree():n(<span class="number">0</span>),tot(<span class="number">1</span>),now(<span class="number">1</span>),rem(<span class="number">0</span>)&#123;len[<span class="number">0</span>]=inf;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">node</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l)</span></span>&#123;link[++tot]=<span class="number">1</span>;st[tot]=p;len[tot]=l;<span class="keyword">return</span> tot;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">ins</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">		s[++n]=x;rem++;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> lst=<span class="number">1</span>;rem;)&#123;</span><br><span class="line">			<span class="keyword">while</span>(rem&gt;len[ch[now][s[n-rem+<span class="number">1</span>]]])</span><br><span class="line">				rem-=len[now=ch[now][s[n-rem+<span class="number">1</span>]]];</span><br><span class="line">			<span class="keyword">int</span> &amp;v=ch[now][s[n-rem+<span class="number">1</span>]],c=s[st[v]+rem<span class="number">-1</span>];</span><br><span class="line">			<span class="keyword">if</span>(!v||x==c)&#123;<span class="comment">//插入失败</span></span><br><span class="line">				link[lst]=now;lst=now;</span><br><span class="line">				<span class="keyword">if</span>(!v)v=node(n,inf),cnt++;<span class="comment">//要新建节点</span></span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;<span class="comment">//插入成功</span></span><br><span class="line">				<span class="keyword">int</span> u=node(st[v],rem<span class="number">-1</span>);</span><br><span class="line">				ch[u][c]=v;ch[u][x]=node(n,inf);cnt++;<span class="comment">//分裂节点</span></span><br><span class="line">				st[v]+=rem<span class="number">-1</span>;len[v]-=rem<span class="number">-1</span>;</span><br><span class="line">				link[lst]=v=u;lst=u;</span><br><span class="line">			&#125;<span class="keyword">if</span>(now==<span class="number">1</span>)rem--;<span class="keyword">else</span> now=link[now];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;T;</span><br><span class="line"><span class="keyword">int</span> n,x;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);n--;<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans+=cnt))</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x),T.ins(x);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
  
       <!-- reward -->
       
@@ -163,32 +172,21 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aday526.github.io/Godzilla/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aday526.github.io/P4070%20[SDOI2016]%20%E7%94%9F%E6%88%90%E9%AD%94%E5%92%92/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/music/" rel="tag">music</a></li></ul>
-
     </footer>
   </div>
 
    
   <nav class="article-nav">
     
-      <a href="/%E9%A2%98%E8%A7%A3%20CF1036C%20%E3%80%90Classy%20Numbers%E3%80%91/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            题解 CF1036C 【Classy Numbers】
-          
-        </div>
-      </a>
     
-    
-      <a href="/GDOI2021PJ%E6%B8%B8%E8%AE%B0/" class="article-nav-link">
+      <a href="/%E9%A2%98%E8%A7%A3%20P4093%20HEOI2016%20%E5%BA%8F%E5%88%97/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">GDOI2021PJ游记</div>
+        <div class="article-nav-title">题解 P4093 HEOI2016 序列</div>
       </a>
     
   </nav>
